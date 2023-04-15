@@ -48,7 +48,6 @@ public class GravityPath : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(_pc.Speed01);
         RenderPath(_info.TimeAhead);
         if (_pc.DidMove)
         {

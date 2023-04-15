@@ -41,7 +41,7 @@ MonoBehaviour:
   MaxPressDuration: 3
   LinearDrag: 0.01
   MinSpeed: 1
-  MaxSpeed: 10
+  MaxSpeed: 2
   RotationSpeed: 3
   MinAngle: 45
   TimeAhead: 2
