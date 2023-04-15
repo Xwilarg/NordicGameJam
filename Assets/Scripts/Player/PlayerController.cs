@@ -55,6 +55,11 @@ namespace NordicGameJam.Player
 
                 _path.SetVisualMomentum(transform.up);
             }
+            else
+            {
+                float angle = Mathf.Atan2(_path.CurrentMomentum.y, _path.CurrentMomentum.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0f, 0f, angle - 90);
+            }
         }
 
         private void FixedUpdate()
