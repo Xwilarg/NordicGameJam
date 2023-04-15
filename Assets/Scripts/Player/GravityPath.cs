@@ -34,6 +34,11 @@ public class GravityPath : MonoBehaviour
         return attractors;
     }
 
+    public void SetVisualMomentum(Vector3 dir)
+    {
+        PathMomentum = dir;
+    }
+
     private void RenderPath(float timeAhead)
     {
         int pointRange = 100;
