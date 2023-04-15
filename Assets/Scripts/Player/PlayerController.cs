@@ -62,14 +62,8 @@ namespace NordicGameJam.Player
             }
             else
             {
-<<<<<<< HEAD
                 float angle = Mathf.Atan2(_path.CurrentMomentum.y, _path.CurrentMomentum.x) * Mathf.Rad2Deg;
                 _rotationTarget.rotation = Quaternion.Euler(0f, 0f, angle - 90);
-=======
-                Vector2 v = _path.PathMomentum;
-                var angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg + _baseAngle;
-                _rotationTarget.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
->>>>>>> ae781570c64ee1f253115c56234f605282a04f45
             }
         }
 
@@ -80,10 +74,6 @@ namespace NordicGameJam.Player
             if (_speed < minSpeed)
             {
                 _speed = minSpeed;
-            }
-            if (_speed > _info.MaxSpeed)
-            {
-                _speed = _info.MaxSpeed;
             }
 
             _path.PathSpeed = _speed;
