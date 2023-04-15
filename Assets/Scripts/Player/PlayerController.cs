@@ -3,13 +3,10 @@ using UnityEngine;
 
 namespace NordicGameJam.Player
 {
-    [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField]
         private PlayerInfo _info;
-
-        private Rigidbody2D _rb;
 
         private int _maxForce;
         private float _timer;
@@ -19,13 +16,14 @@ namespace NordicGameJam.Player
         private bool _aimDirection;
         private float _aimTimer;
 
+        private GravityPath _path;
+
+        private float _speed;
         private float _baseAngle;
         private float _startAngle, _endAngle;
 
         private void Awake()
         {
-            _rb = GetComponent<Rigidbody2D>();
-            _rb.drag = _info.LinearDrag;
             _timer = Time.unscaledTime;
 
             _baseAngle = transform.rotation.eulerAngles.z;
@@ -33,6 +31,8 @@ namespace NordicGameJam.Player
 
             _startAngle = _baseAngle - _info.MinAngle;
             _endAngle = _baseAngle + _info.MinAngle;
+
+            _path = gameObject.GetComponent<GravityPath>();
         }
 
         private void Update()
@@ -51,6 +51,8 @@ namespace NordicGameJam.Player
                     y: transform.rotation.eulerAngles.y,
                     z: Mathf.Lerp(_aimDirection ? _startAngle : _endAngle, _aimDirection ? _endAngle : _startAngle, _aimTimer / _info.RotationSpeed)
                 );
+
+                _path.SetVisualMomentum(transform.up);
             }
         }
 
@@ -58,20 +60,12 @@ namespace NordicGameJam.Player
         {
             var minSpeed = _info.MinSpeed * (_maxForce > 0 ? _info.SlowDownMultiplier : 1f);
             // Player has a minimal speed it can't go under
-            if (_rb.velocity.magnitude < minSpeed)
+            if (_speed < minSpeed)
             {
-                _rb.velocity = _rb.velocity.normalized * minSpeed;
+                _speed = minSpeed;
             }
-        }
 
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.collider.CompareTag("Wall"))
-            {
-                // Adjust player rotation when hitting a wall
-                var angle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - _baseAngle - 180f));
-            }
+            _path.PathSpeed = _speed;
         }
 
         public void OnForceChange(int value)
@@ -82,12 +76,10 @@ namespace NordicGameJam.Player
                 {
                     // Apply force to the player
                     var timeDiff = Mathf.Clamp(Time.unscaledTime - _timer, 0f, _info.MaxPressDuration);
-                    _rb.AddForce(transform.up *
-                        _info.BaseSpeed *
-                        _info.PressionModifier.Evaluate(_maxForce / 100f) * // LEGO SDK always return a value between 0 and 100
-                        _info.DurationModifier.Evaluate(timeDiff / 3f) *
-                        Time.fixedDeltaTime
-                        , ForceMode2D.Impulse);
+                    _speed += _info.BaseSpeed *
+                            _info.PressionModifier.Evaluate(_maxForce / 100f) * // LEGO SDK always return a value between 0 and 100
+                            _info.DurationModifier.Evaluate(timeDiff / 3f) *
+                            Time.fixedDeltaTime;
 
                     _didMove = true;
                 }
@@ -100,7 +92,7 @@ namespace NordicGameJam.Player
             {
                 if (_maxForce == 0) // Slow down the player while we are pressing the button
                 {
-                    _rb.velocity *= _info.SlowDownMultiplier;
+                    _speed = _speed * _info.SlowDownMultiplier;
                 }
                 _maxForce = value;
             }
