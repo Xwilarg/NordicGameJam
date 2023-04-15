@@ -41,6 +41,10 @@ namespace NordicGameJam.Menu
         private void Awake()
         {
             UpdateText();
+            Translate.Instance.OnTranslationChange += (_, _2) =>
+            {
+                UpdateText();
+            };
         }
 
         private void UpdateText()

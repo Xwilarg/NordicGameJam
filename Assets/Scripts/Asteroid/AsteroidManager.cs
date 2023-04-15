@@ -29,7 +29,10 @@ namespace NordicGameJam.Asteroid
 
             var go = Instantiate(asteroid, new Vector2(randomPosition.x, randomPosition.y), Quaternion.identity);
 
-            var direction = (_temple.position - go.transform.position).normalized;
+            var target = _temple.position;
+            target.y += Random.Range(-_info.templeOffset, _info.templeOffset);
+
+            var direction = (target - go.transform.position).normalized;
             var rb = go.GetComponent<Rigidbody2D>();
             rb.velocity = direction * _info.Speed;
             rb.angularVelocity = Random.Range(10f, 20f);
