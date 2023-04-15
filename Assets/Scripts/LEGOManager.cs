@@ -1,7 +1,6 @@
 ﻿using LEGOWirelessSDK;
 using NordicGameJam.Hole;
 using NordicGameJam.Player;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
