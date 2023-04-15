@@ -1,59 +1,11 @@
 {
   "dependencies": {
-    "com.autodesk.fbx": {
-      "version": "4.2.1",
-      "depth": 2,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.lego.core": {
-      "version": "0.0.3",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://upm.services.lego.com/public"
-    },
-    "com.lego.creatures": {
-      "version": "0.0.6-preview",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.render-pipelines.universal": "10.2.2"
-      },
-      "url": "https://upm.services.lego.com/public"
-    },
     "com.lego.materials": {
-      "version": "0.3.4",
+      "version": "0.3.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.render-pipelines.universal": "12.1.2"
-      },
-      "url": "https://upm.services.lego.com/public"
-    },
-    "com.lego.minifig": {
-      "version": "1.2.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.render-pipelines.universal": "12.1.2",
-        "com.lego.materials": "0.3.3",
-        "com.unity.animation.rigging": "1.1.1",
-        "com.unity.sharp-zip-lib": "1.3.2-preview"
-      },
-      "url": "https://upm.services.lego.com/public"
-    },
-    "com.lego.modelimporter": {
-      "version": "0.10.1",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.lego.core": "0.0.3",
-        "com.unity.formats.fbx": "4.1.2",
-        "com.lego.materials": "0.3.4",
-        "com.unity.render-pipelines.universal": "12.1.2",
-        "com.unity.sharp-zip-lib": "1.3.2-preview"
       },
       "url": "https://upm.services.lego.com/public"
     },
@@ -158,19 +110,9 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.animation.rigging": {
-      "version": "1.2.1",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.burst": "1.4.1",
-        "com.unity.test-framework": "1.1.24"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.burst": {
       "version": "1.8.4",
-      "depth": 2,
+      "depth": 3,
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.2.1"
@@ -236,16 +178,6 @@
         "com.unity.testtools.codecoverage": "1.2.2"
       }
     },
-    "com.unity.formats.fbx": {
-      "version": "4.2.1",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.timeline": "1.7.1",
-        "com.autodesk.fbx": "4.2.1"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.ide.rider": {
       "version": "3.0.18",
       "depth": 0,
@@ -294,7 +226,7 @@
     },
     "com.unity.render-pipelines.core": {
       "version": "14.0.7",
-      "depth": 2,
+      "depth": 3,
       "source": "builtin",
       "dependencies": {
         "com.unity.ugui": "1.0.0",
@@ -305,7 +237,7 @@
     },
     "com.unity.render-pipelines.universal": {
       "version": "14.0.7",
-      "depth": 1,
+      "depth": 2,
       "source": "builtin",
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
@@ -316,7 +248,7 @@
     },
     "com.unity.searcher": {
       "version": "4.9.2",
-      "depth": 3,
+      "depth": 4,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -330,19 +262,12 @@
     },
     "com.unity.shadergraph": {
       "version": "14.0.7",
-      "depth": 2,
+      "depth": 3,
       "source": "builtin",
       "dependencies": {
         "com.unity.render-pipelines.core": "14.0.7",
         "com.unity.searcher": "4.9.2"
       }
-    },
-    "com.unity.sharp-zip-lib": {
-      "version": "1.3.2-preview",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
       "version": "1.1.33",
