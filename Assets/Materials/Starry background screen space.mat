@@ -50,10 +50,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Brightness: 1
-    - _BrightnessPower: 1
-    - _BrightnessVariationScale: 0.05
-    - _OverallScale: 5
+    - _Brightness: 1.4
+    - _BrightnessPower: 4
+    - _BrightnessVariationScale: 0.2
+    - _OverallScale: 1.5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Randomness: 5
