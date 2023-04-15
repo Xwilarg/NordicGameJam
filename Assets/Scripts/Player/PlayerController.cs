@@ -22,7 +22,6 @@ namespace NordicGameJam.Player
 
         private void Awake()
         {
-            //_rb.drag = _info.LinearDrag;
             _timer = Time.unscaledTime;
 
             _baseAngle = transform.rotation.eulerAngles.z;
@@ -49,11 +48,6 @@ namespace NordicGameJam.Player
                     z: Mathf.Lerp(_aimDirection ? _startAngle : _endAngle, _aimDirection ? _endAngle : _startAngle, _aimTimer / _info.RotationSpeed)
                 );
             }
-
-            if(Input.GetKeyDown("space"))
-                OnForceChange(50);
-            else
-                OnForceChange(0);
         }
 
         private void FixedUpdate()
