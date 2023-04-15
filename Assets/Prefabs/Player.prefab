@@ -148,6 +148,7 @@ MonoBehaviour:
   PathVisualPrefab: {fileID: 5010374603543864546, guid: 3563ac2dbe12a054f9f76d6f543cb5e6, type: 3}
   PathSpeed: 0
   Bounds: {fileID: 0}
+  _info: {fileID: 11400000, guid: c05e2f69b51237d4bb8bf79029bff8d9, type: 2}
 --- !u!61 &647306464699687714
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -68,3 +68,5 @@ MonoBehaviour:
   MaxSpeed: 100
   RotationSpeed: 3
   MinAngle: 45
+  TimeAhead: 2
+  SimPoints: 100

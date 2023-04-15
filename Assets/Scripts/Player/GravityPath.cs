@@ -1,5 +1,6 @@
 using NordicGameJam.Player;
 using System.Collections.Generic;
+using NordicGameJam.SO;
 using UnityEngine;
 
 public class GravityPath : MonoBehaviour
@@ -7,6 +8,9 @@ public class GravityPath : MonoBehaviour
     public GameObject PathVisualPrefab;
     public float PathSpeed;
     public Vector3 CurrentMomentum {get => PathMomentum;}
+
+    [SerializeField]
+    private PlayerInfo _info;
 
     private Transform PathVisual;
     public Vector3 PathMomentum { private set; get; }
@@ -45,7 +49,7 @@ public class GravityPath : MonoBehaviour
 
     void FixedUpdate()
     {
-        RenderPath(2);
+        RenderPath(_info.TimeAhead);
         if (_pc.DidMove)
         {
             (transform.position, PathMomentum) = PathDelta(transform.position, PathMomentum, Time.fixedDeltaTime * PathSpeed, GetAttractors());
@@ -68,7 +72,7 @@ public class GravityPath : MonoBehaviour
 
     private void RenderPath(float timeAhead)
     {
-        int pointRange = 100;
+        int pointRange = _info.SimPoints;
         float delta = timeAhead/pointRange;
 
         PathVisual.position = transform.position;
