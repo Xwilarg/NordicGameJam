@@ -22,26 +22,28 @@ namespace NordicGameJam
         // Reference sensor ID to gameobject
         private readonly Dictionary<int, ActivePlayerInfo> _instances = new();
 
-        private void Awake()
+        private void Start()
         {
             for (int i = 0; i < _sensors.Length; i++)
             {
                 var s = _sensors[i];
-                _instances.Add(s.GetInstanceID(), new() { Spawn = _spawns[i % _spawns.Length] });
+                _instances.Add(s.InstanceID, new() { Spawn = _spawns[i % _spawns.Length] });
                 s.OnConnected += (_, e) =>
                 {
-                    Assert.IsFalse(_instances.ContainsKey(i), "Invalid sensor ID");
+                    var instanceID = e.Sensor.GetInstanceID();
+                    Assert.IsTrue(_instances.ContainsKey(instanceID), "Invalid sensor ID");
                     if (e.Connected)
                     {
-                        Assert.IsNull(_instances[e.InstanceID].Instance, "Player was already instanciated");
-                        var go = Instantiate(_playerPrefabs, _instances[e.InstanceID].Spawn.position, Quaternion.identity);
-                        _instances[e.InstanceID].Instance = go;
+                        Assert.IsNull(_instances[instanceID].Instance, "Player was already instanciated");
+                        var go = Instantiate(_playerPrefabs, _instances[instanceID].Spawn.position, Quaternion.identity);
+                        e.Sensor.ForceChanged.AddListener(go.GetComponent<PlayerController>().OnForceChange); // TODO: Unregister event on destroy
+                        _instances[instanceID].Instance = go;
                     }
                     else
                     {
-                        Assert.IsNotNull(_instances[e.InstanceID].Instance, "Player wasn't exists");
-                        Destroy(_instances[e.InstanceID].Instance);
-                        _instances[e.InstanceID].Instance = null;
+                        Assert.IsNotNull(_instances[instanceID].Instance, "Player wasn't exists");
+                        Destroy(_instances[instanceID].Instance);
+                        _instances[instanceID].Instance = null;
                     }
                 };
             }
