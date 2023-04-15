@@ -6,18 +6,16 @@ namespace NordicGameJam.Player
 {
     public class SensorInfo : MonoBehaviour
     {
-        private ForceSensor _forceSensor;
+        public ForceSensor ForceSensor { private set; get; }
 
         private void Awake()
         {
-            _forceSensor = GetComponent<ForceSensor>();
+            ForceSensor = GetComponent<ForceSensor>();
         }
-
-        public int InstanceID => _forceSensor.GetInstanceID();
 
         public void OnSensorConnected(bool value)
         {
-            OnConnected?.Invoke(this, new() { Connected = value, Sensor = _forceSensor });
+            OnConnected?.Invoke(this, new() { Connected = value, Sensor = this });
         }
 
         public void ConnectOverride()
@@ -27,7 +25,7 @@ namespace NordicGameJam.Player
 
         public void ForceOverride(int value)
         {
-            _forceSensor.ForceChanged?.Invoke(value);
+            ForceSensor.ForceChanged?.Invoke(value);
         }
 
         public event EventHandler<PlayerConnectionEventArgs> OnConnected;
