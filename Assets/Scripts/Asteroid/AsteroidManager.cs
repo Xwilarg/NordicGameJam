@@ -7,7 +7,10 @@ namespace NordicGameJam.Asteroid
     public class AsteroidManager : MonoBehaviour
     {
         [SerializeField]
-        private GameObject asteroidPrefab;
+        private GameObject _asteroidPrefab;
+
+        [SerializeField]
+        private Sprite[] _asteroidSprites;
 
         [SerializeField]
         private AsteroidInfo _info;
@@ -17,7 +20,7 @@ namespace NordicGameJam.Asteroid
 
         private void Awake()
         {
-            StartCoroutine(Spawn(_info.SpawnInternal, asteroidPrefab));
+            StartCoroutine(Spawn(_info.SpawnInternal, _asteroidPrefab));
         }
 
         private IEnumerator Spawn(float interval, GameObject asteroid)
@@ -35,7 +38,10 @@ namespace NordicGameJam.Asteroid
             var go = Instantiate(asteroid, new Vector2(randomPosition.x, randomPosition.y), Quaternion.identity);
 
             var direction = (_temple.position - go.transform.position).normalized;
-            go.GetComponent<Rigidbody2D>().velocity = direction * _info.Speed;
+            var rb = go.GetComponent<Rigidbody2D>();
+            rb.velocity = direction * _info.Speed;
+            rb.angularVelocity = Random.Range(10f, 20f);
+            go.GetComponent<SpriteRenderer>().sprite = _asteroidSprites[Random.Range(0, _asteroidSprites.Length)];
             yield return Spawn(interval, asteroid);
         }
 
