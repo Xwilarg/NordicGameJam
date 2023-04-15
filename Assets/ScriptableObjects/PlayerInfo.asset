@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerInfo
   m_EditorClassIdentifier: 
   BaseSpeed: 40
-  SlowDownMultiplier: 0.75
+  SlowDownMultiplier: 1
   PressionModifier:
     serializedVersion: 2
     m_Curve:
@@ -39,33 +39,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   MaxPressDuration: 3
-  DurationModifier:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  LinearDrag: 0.25
+  LinearDrag: 0.01
   MinSpeed: 1
-  MaxSpeed: 100
+  MaxSpeed: 10
   RotationSpeed: 3
   MinAngle: 45
   TimeAhead: 2

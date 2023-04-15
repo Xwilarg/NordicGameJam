@@ -48,6 +48,7 @@ public class GravityPath : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.Log(_pc.Speed01);
         RenderPath(_info.TimeAhead);
         if (_pc.DidMove)
         {
@@ -96,7 +97,7 @@ public class GravityPath : MonoBehaviour
         foreach(Attractor att in attractors)
         {
             Vector3 dir = (att.transform.position - pos).normalized;
-            m += dir * (1/(dir.magnitude*dir.magnitude)) * G * att.Strenght * deltaT;
+            m += dir * (1/(dir.magnitude*dir.magnitude)) * G * att.Strenght * deltaT * (1f - _pc.Speed01);
         }
 
         Vector3 delta = m*deltaT;
