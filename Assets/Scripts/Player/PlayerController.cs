@@ -25,6 +25,8 @@ namespace NordicGameJam.Player
         [SerializeField]
         private Transform _rotationTarget;
 
+        public Transform RotationTarget => _rotationTarget;
+
         private void Awake()
         {
             _timer = Time.unscaledTime;
@@ -50,7 +52,7 @@ namespace NordicGameJam.Player
                     _aimDirection = !_aimDirection;
                 }
 
-                _rotationTarget.transform.rotation = Quaternion.Euler(
+                _rotationTarget.rotation = Quaternion.Euler(
                     x: transform.rotation.eulerAngles.x,
                     y: transform.rotation.eulerAngles.y,
                     z: Mathf.Lerp(_aimDirection ? _startAngle : _endAngle, _aimDirection ? _endAngle : _startAngle, _aimTimer / _info.RotationSpeed)
@@ -60,8 +62,14 @@ namespace NordicGameJam.Player
             }
             else
             {
+<<<<<<< HEAD
                 float angle = Mathf.Atan2(_path.CurrentMomentum.y, _path.CurrentMomentum.x) * Mathf.Rad2Deg;
                 _rotationTarget.rotation = Quaternion.Euler(0f, 0f, angle - 90);
+=======
+                Vector2 v = _path.PathMomentum;
+                var angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg + _baseAngle;
+                _rotationTarget.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+>>>>>>> ae781570c64ee1f253115c56234f605282a04f45
             }
         }
 

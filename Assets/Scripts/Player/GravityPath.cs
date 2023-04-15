@@ -10,7 +10,7 @@ public class GravityPath : MonoBehaviour
     public Vector3 CurrentMomentum {get => PathMomentum;}
 
     private Transform PathVisual;
-    private Vector3 PathMomentum;
+    public Vector3 PathMomentum { private set; get; }
 
     private PlayerController _pc;
 
