@@ -7,7 +7,6 @@ public class GravityPath : MonoBehaviour
 {
     public GameObject PathVisualPrefab;
     public float PathSpeed;
-    public BoxCollider2D Bounds;
     public Vector3 CurrentMomentum {get => PathMomentum;}
 
     [SerializeField]
@@ -20,9 +19,23 @@ public class GravityPath : MonoBehaviour
 
     private const float G = 1f;
 
+    private Camera _cam;
+
     private void Awake()
     {
         _pc = GetComponent<PlayerController>();
+        _cam = Camera.main;
+    }
+
+    // http://answers.unity.com/answers/502236/view.html
+    public static Bounds CalculateBounds(Camera cam)
+    {
+        float screenAspect = Screen.width / (float)Screen.height;
+        float cameraHeight = cam.orthographicSize * 2;
+        Bounds bounds = new(
+            cam.transform.position,
+            new Vector3(cameraHeight * screenAspect, cameraHeight, 0));
+        return bounds;
     }
 
     void Start()
@@ -86,25 +99,34 @@ public class GravityPath : MonoBehaviour
             m += dir * (1/(dir.magnitude*dir.magnitude)) * G * att.Strenght * deltaT;
         }
 
-        (bool hitBounds, Vector3 normal) = BoundsHit(pos+(m*deltaT), Bounds.bounds);
+        Vector3 delta = m*deltaT;
+
+        var bounds = CalculateBounds(_cam);
+        bounds.min += new Vector3(2f, 2f);
+        bounds.max -= new Vector3(2f, 2f);
+
+        (bool hitBounds, Vector3 normal, float upto) = BoundsHit(pos, pos+(m*deltaT), bounds);
         if(hitBounds)
         {
             m = Vector3.Reflect(m, normal);
+            delta = delta.normalized * upto + m.normalized * (delta.magnitude-upto);
         }
 
-        return (pos+(m*deltaT), m);
+        return (pos+delta, m);
     }
 
-    private (bool, Vector3) BoundsHit(Vector3 pos, Bounds b)
+    private (bool, Vector3, float) BoundsHit(Vector3 before, Vector3 after, Bounds b)
     {
-        if(pos.x < b.min.x)
-            return (true, Vector3.right);
-        if(pos.y < b.min.y)
-            return (true, Vector3.up);
-        if(pos.x > b.max.x)
-            return (true, Vector3.left);
-        if(pos.y > b.max.y)
-            return (true, Vector3.down);
-        return (false, Vector3.zero);
+        Vector3 delta = after-before;
+
+        if(after.x < b.min.x)
+            return (true, Vector3.right, delta.magnitude * ((b.min.x-before.x) / (after.x-before.x)));
+        if(after.y < b.min.y)
+            return (true, Vector3.up, delta.magnitude * ((b.min.y-before.y) / (after.y-before.y)));
+        if(after.x > b.max.x)
+            return (true, Vector3.left, delta.magnitude * ((b.max.x-before.x) / (after.x-before.x)));
+        if(after.y > b.max.y)
+            return (true, Vector3.down, delta.magnitude * ((b.max.y-before.y) / (after.y-before.y)));
+        return (false, Vector3.zero, 0);
     }
 }
