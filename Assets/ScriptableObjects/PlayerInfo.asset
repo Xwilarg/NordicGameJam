@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerInfo
   m_EditorClassIdentifier: 
   BaseSpeed: 300
+  SlowDownMultiplier: 0.75
   PressionModifier:
     serializedVersion: 2
     m_Curve:
@@ -62,5 +63,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  LinearDrag: 0.1
-  MinSpeed: 2
+  LinearDrag: 0.25
+  MinSpeed: 1
+  RotationSpeed: 3
+  MinAngle: 45

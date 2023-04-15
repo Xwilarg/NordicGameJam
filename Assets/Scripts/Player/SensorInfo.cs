@@ -20,6 +20,16 @@ namespace NordicGameJam.Player
             OnConnected?.Invoke(this, new() { Connected = value, Sensor = _forceSensor });
         }
 
+        public void ConnectOverride()
+        {
+            OnSensorConnected(true);
+        }
+
+        public void ForceOverride(int value)
+        {
+            _forceSensor.ForceChanged?.Invoke(value);
+        }
+
         public event EventHandler<PlayerConnectionEventArgs> OnConnected;
     }
 }

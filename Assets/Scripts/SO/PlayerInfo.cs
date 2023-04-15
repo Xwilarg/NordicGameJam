@@ -5,8 +5,13 @@ namespace NordicGameJam.SO
     [CreateAssetMenu(menuName = "ScriptableObject/PlayerInfo", fileName = "PlayerInfo")]
     public class PlayerInfo : ScriptableObject
     {
+        [Header("Speed")]
         [Tooltip("Base speed of the player")]
         public float BaseSpeed;
+
+        [Tooltip("Speed when we are slowed down (aka pressing the button)")]
+        [Range(0f, 1f)]
+        public float SlowDownMultiplier;
 
         [Tooltip("Curve evolution of the speed depending of how much we press the button")]
         public AnimationCurve PressionModifier;
@@ -23,5 +28,10 @@ namespace NordicGameJam.SO
 
         [Tooltip("Speed the player won't go under")]
         public float MinSpeed;
+
+        [Header("Aim")]
+        public float RotationSpeed;
+
+        public float MinAngle;
     }
 }

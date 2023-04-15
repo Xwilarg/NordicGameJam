@@ -2,6 +2,7 @@ using NordicGameJam.Player;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.InputSystem;
 
 namespace NordicGameJam
 {
@@ -35,7 +36,7 @@ namespace NordicGameJam
                     if (e.Connected)
                     {
                         Assert.IsNull(_instances[instanceID].Instance, "Player was already instanciated");
-                        var go = Instantiate(_playerPrefabs, _instances[instanceID].Spawn.position, Quaternion.identity);
+                        var go = Instantiate(_playerPrefabs, _instances[instanceID].Spawn.position, Quaternion.Euler(0f, 0f, -90f));
                         e.Sensor.ForceChanged.AddListener(go.GetComponent<PlayerController>().OnForceChange); // TODO: Unregister event on destroy
                         _instances[instanceID].Instance = go;
                     }
@@ -49,11 +50,47 @@ namespace NordicGameJam
             }
         }
 
+        private bool IsConnected(int id)
+        {
+            return _instances[id].Instance != null;
+        }
+
         public void OnLegoDeviceConnected(bool value)
         {
             if (value)
             {
                 _waitingText.SetActive(false);
+            }
+        }
+
+        public void OnButton1Press(InputAction.CallbackContext value)
+            => OnPlayerInput(0, value);
+
+        public void OnButton2Press(InputAction.CallbackContext value)
+            => OnPlayerInput(1, value);
+
+        public void OnPlayerInput(int playerID, InputAction.CallbackContext value)
+        {
+            if (value.phase == InputActionPhase.Started)
+            {
+                var s = _sensors[playerID];
+                if (IsConnected(s.InstanceID))
+                {
+                    s.ForceOverride(100);
+                }
+                else
+                {
+                    OnLegoDeviceConnected(true);
+                    s.ConnectOverride();
+                }
+            }
+            else if (value.phase == InputActionPhase.Canceled)
+            {
+                var s = _sensors[playerID];
+                if (IsConnected(s.InstanceID))
+                {
+                    s.ForceOverride(0);
+                }
             }
         }
     }
