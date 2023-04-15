@@ -7,5 +7,9 @@ namespace NordicGameJam.SO
     {
         public float Speed;
         public float SpawnInternal;
+        public float _minX = 12.0f;
+        public float _maxX = 20.0f;
+        public float _minY = -6.0f;
+        public float _maxY = 6.0f;
     }
 }
