@@ -879,6 +879,9 @@ MonoBehaviour:
   _spawns:
   - {fileID: 1080901203}
   - {fileID: 1213756316}
+  _sprites:
+  - {fileID: 21300000, guid: fb90a92458e5d431985d7be1b88582fd, type: 3}
+  - {fileID: 21300000, guid: cd19e251da68c4f97bfa1a4d0db6cbfb, type: 3}
 --- !u!4 &2005633025
 Transform:
   m_ObjectHideFlags: 0
