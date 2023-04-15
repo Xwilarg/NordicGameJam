@@ -97,4 +97,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b3370383d793545ae1ce5219827e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _brightnessVariationSpeed: 0.02
+  _brightnessVariationSpeed: 0.01
