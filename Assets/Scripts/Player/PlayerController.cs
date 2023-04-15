@@ -27,6 +27,12 @@ namespace NordicGameJam.Player
 
         public Transform RotationTarget => _rotationTarget;
 
+        [SerializeField]
+        private Transform _powerBar;
+
+        private float _power;
+        private float _currForce;
+
         private void Awake()
         {
             _timer = Time.unscaledTime;
@@ -39,10 +45,16 @@ namespace NordicGameJam.Player
             _endAngle = _baseAngle + _info.MinAngle;
 
             _path = gameObject.GetComponent<GravityPath>();
+            _powerBar.localScale = new Vector3(0f, _powerBar.localScale.y, _powerBar.localScale.z);
         }
 
         private void Update()
         {
+            _power += Mathf.Clamp(Time.deltaTime *
+                _info.PressionModifier.Evaluate(_currForce / 100f), // LEGO SDK always return a value between 0 and 100
+            0f, _info.MaxPressDuration);
+            _powerBar.localScale = new Vector3(_power / _info.MaxPressDuration, _powerBar.localScale.y, _powerBar.localScale.z);
+
             if (!DidMove)
             {
                 _aimTimer -= Time.deltaTime;
@@ -69,11 +81,17 @@ namespace NordicGameJam.Player
 
         private void FixedUpdate()
         {
+            _speed /= (1f + _info.LinearDrag);
+
             var minSpeed = _info.MinSpeed * (_maxForce > 0 ? _info.SlowDownMultiplier : 1f);
             // Player has a minimal speed it can't go under
             if (_speed < minSpeed)
             {
                 _speed = minSpeed;
+            }
+            if (_speed > _info.MaxSpeed)
+            {
+                _speed = _info.MaxSpeed;
             }
 
             _path.PathSpeed = _speed;
@@ -86,27 +104,28 @@ namespace NordicGameJam.Player
                 if (_maxForce > 0)
                 {
                     // Apply force to the player
-                    var timeDiff = Mathf.Clamp(Time.unscaledTime - _timer, 0f, _info.MaxPressDuration);
-                    _speed += _info.BaseSpeed *
-                            _info.PressionModifier.Evaluate(_maxForce / 100f) * // LEGO SDK always return a value between 0 and 100
-                            _info.DurationModifier.Evaluate(timeDiff / 3f) *
-                            Time.fixedDeltaTime;
+                    _speed += _info.BaseSpeed * _power * Time.fixedDeltaTime;
 
                     DidMove = true;
                 }
 
                 // Reset stuffs
                 _maxForce = 0;
-                _timer = Time.unscaledTime;
+                _powerBar.localScale = new Vector3(0f, _powerBar.localScale.y, _powerBar.localScale.z);
+                _power = 0f;
             }
-            else if (value > _maxForce)
+            else
             {
-                if (_maxForce == 0) // Slow down the player while we are pressing the button
+                if (value > _maxForce)
                 {
-                    _speed = _speed * _info.SlowDownMultiplier;
+                    if (_maxForce == 0) // Slow down the player while we are pressing the button
+                    {
+                        _speed = _speed * _info.SlowDownMultiplier;
+                    }
+                    _maxForce = value;
                 }
-                _maxForce = value;
             }
+            _currForce = value;
         }
     }
 }

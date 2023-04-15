@@ -7,7 +7,6 @@ public class GravityPath : MonoBehaviour
 {
     public GameObject PathVisualPrefab;
     public float PathSpeed;
-    public BoxCollider2D Bounds;
     public Vector3 CurrentMomentum {get => PathMomentum;}
 
     [SerializeField]
@@ -20,9 +19,23 @@ public class GravityPath : MonoBehaviour
 
     private const float G = 1f;
 
+    private Camera _cam;
+
     private void Awake()
     {
         _pc = GetComponent<PlayerController>();
+        _cam = Camera.main;
+    }
+
+    // http://answers.unity.com/answers/502236/view.html
+    public static Bounds CalculateBounds(Camera cam)
+    {
+        float screenAspect = Screen.width / (float)Screen.height;
+        float cameraHeight = cam.orthographicSize * 2;
+        Bounds bounds = new(
+            cam.transform.position,
+            new Vector3(cameraHeight * screenAspect, cameraHeight, 0));
+        return bounds;
     }
 
     void Start()
@@ -88,7 +101,11 @@ public class GravityPath : MonoBehaviour
 
         Vector3 delta = m*deltaT;
 
-        (bool hitBounds, Vector3 normal, float upto) = BoundsHit(pos, pos+(m*deltaT), Bounds.bounds);
+        var bounds = CalculateBounds(_cam);
+        bounds.min += new Vector3(2f, 2f);
+        bounds.max -= new Vector3(2f, 2f);
+
+        (bool hitBounds, Vector3 normal, float upto) = BoundsHit(pos, pos+(m*deltaT), bounds);
         if(hitBounds)
         {
             m = Vector3.Reflect(m, normal);
