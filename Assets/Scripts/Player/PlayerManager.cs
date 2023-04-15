@@ -37,7 +37,10 @@ namespace NordicGameJam
             {
                 var s = _sensors[i];
                 _instances.Add(s.GetInstanceID(), new() { Spawn = _spawns[i % _spawns.Length] });
-                Connect(s);
+                if (!LEGOManager.Instance.CanUseKeyboard) // Mean we are in 'LEGO' mode
+                {
+                    Connect(s);
+                }
             }
         }
 
@@ -54,7 +57,7 @@ namespace NordicGameJam
 
         public void OnPlayerInput(int playerID, InputAction.CallbackContext value)
         {
-            if (value.phase == InputActionPhase.Started && !LEGOManager.Instance.IsLEGOEnabled && playerID < _sensors.Length)
+            if (value.phase == InputActionPhase.Started && LEGOManager.Instance.CanUseKeyboard && playerID < _sensors.Length)
             {
                 var s = _sensors[playerID];
                 if (IsConnected(s.GetInstanceID()))

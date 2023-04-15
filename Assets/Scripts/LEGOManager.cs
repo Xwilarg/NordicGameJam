@@ -12,7 +12,7 @@ namespace NordicGameJam
 
         public SensorInfo[] Sensors => GetComponentsInChildren<SensorInfo>();
 
-        public bool IsLEGOEnabled => _debugMode || HUB.enabled;
+        public bool CanUseKeyboard => _debugMode || !HUB.enabled;
 
         [SerializeField]
         private bool _debugMode;
