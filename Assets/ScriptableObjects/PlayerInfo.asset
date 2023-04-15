@@ -64,3 +64,5 @@ MonoBehaviour:
     m_RotationOrder: 4
   LinearDrag: 0.25
   MinSpeed: 1
+  RotationSpeed: 3
+  MinAngle: 45
