@@ -71,7 +71,6 @@ namespace NordicGameJam.Player
                 );
 
                 _path.SetVisualMomentum(_rotationTarget.up);
-                _powerBar.localScale = new Vector3(0f, _powerBar.localScale.y, _powerBar.localScale.z);
             }
             else
             {
@@ -82,11 +81,17 @@ namespace NordicGameJam.Player
 
         private void FixedUpdate()
         {
+            _speed /= (1f + _info.LinearDrag);
+
             var minSpeed = _info.MinSpeed * (_maxForce > 0 ? _info.SlowDownMultiplier : 1f);
             // Player has a minimal speed it can't go under
             if (_speed < minSpeed)
             {
                 _speed = minSpeed;
+            }
+            if (_speed > _info.MaxSpeed)
+            {
+                _speed = _info.MaxSpeed;
             }
 
             _path.PathSpeed = _speed;
@@ -108,6 +113,7 @@ namespace NordicGameJam.Player
                 // Reset stuffs
                 _maxForce = 0;
                 _timer = Time.unscaledTime;
+                _powerBar.localScale = new Vector3(0f, _powerBar.localScale.y, _powerBar.localScale.z);
             }
             else
             {
@@ -119,8 +125,8 @@ namespace NordicGameJam.Player
                     }
                     _maxForce = value;
                 }
-                _currForce = value;
             }
+            _currForce = value;
         }
     }
 }
