@@ -58,7 +58,7 @@ namespace NordicGameJam.Player
                     z: Mathf.Lerp(_aimDirection ? _startAngle : _endAngle, _aimDirection ? _endAngle : _startAngle, _aimTimer / _info.RotationSpeed)
                 );
 
-                _path.SetVisualMomentum(transform.up);
+                _path.SetVisualMomentum(_rotationTarget.up);
             }
             else
             {
