@@ -290,89 +290,8 @@ Transform:
   - {fileID: 1080901203}
   - {fileID: 1213756316}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &780781208
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 780781210}
-  - component: {fileID: 780781209}
-  - component: {fileID: 780781211}
-  m_Layer: 0
-  m_Name: Force Sensor (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &780781209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780781208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 586fa312c81af45fbbd88a9ec763c702, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsConnectedChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 780781211}
-        m_TargetAssemblyTypeName: NordicGameJam.Player.SensorInfo, Assembly-CSharp
-        m_MethodName: OnSensorConnected
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  isInternal: 0
-  port: -1
-  ForceChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  TouchChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  mode: 0
---- !u!4 &780781210
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780781208}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1096864857}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &780781211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780781208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbde90eb27e9bc844831bd6d1070442d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &990858655
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,167 +476,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 723153584}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1096864851
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1096864857}
-  - component: {fileID: 1096864856}
-  - component: {fileID: 1096864855}
-  - component: {fileID: 1096864854}
-  - component: {fileID: 1096864853}
-  - component: {fileID: 1096864852}
-  m_Layer: 0
-  m_Name: LEGO Hub
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1096864852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1096864851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 146d1f43d75fa44c28c29ce4cccb9fc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsConnectedChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  isInternal: 1
-  port: 96
-  TemperatureChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1096864853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1096864851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 146d1f43d75fa44c28c29ce4cccb9fc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsConnectedChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  isInternal: 1
-  port: 61
-  TemperatureChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1096864854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1096864851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cd908b33c43a452892fd3760ed50170, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsConnectedChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  isInternal: 1
-  port: 99
-  OrientationChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1096864855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1096864851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886d8b84190a64d82b3ddbb656e323f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsConnectedChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  isInternal: 1
-  port: 97
-  AccelerationChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1096864856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1096864851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16585a294bdd24d7e915bcfb825609cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hubType: 1
-  connectToSpecificHubId: 
-  autoConnectOnStart: 1
-  _ledColor: {r: 0, g: 1, b: 0, a: 1}
-  internalServices:
-  - {fileID: 1096864855}
-  - {fileID: 1096864854}
-  - {fileID: 1096864853}
-  - {fileID: 1096864852}
-  externalServices:
-  - {fileID: 0}
-  - {fileID: 780781209}
-  - {fileID: 1622745625}
-  IsConnectedChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2005633024}
-        m_TargetAssemblyTypeName: NordicGameJam.PlayerManager, Assembly-CSharp
-        m_MethodName: OnLegoDeviceConnected
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  ButtonChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!4 &1096864857
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1096864851}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 780781210}
-  - {fileID: 1622745626}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1213756315
 GameObject:
@@ -1093,87 +851,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1 &1622745624
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1622745626}
-  - component: {fileID: 1622745625}
-  - component: {fileID: 1622745627}
-  m_Layer: 0
-  m_Name: Force Sensor (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1622745625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622745624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 586fa312c81af45fbbd88a9ec763c702, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsConnectedChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1622745627}
-        m_TargetAssemblyTypeName: NordicGameJam.Player.SensorInfo, Assembly-CSharp
-        m_MethodName: OnSensorConnected
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  isInternal: 0
-  port: -1
-  ForceChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  TouchChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  mode: 0
---- !u!4 &1622745626
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622745624}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1096864857}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1622745627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622745624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbde90eb27e9bc844831bd6d1070442d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1868525037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,7 +1024,7 @@ RectTransform:
   m_Children:
   - {fileID: 1466050576}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1387,8 +1064,8 @@ MonoBehaviour:
   _playerPrefabs: {fileID: 3722639058099846323, guid: 1123bc15b1dd6204fadbe789c6e43011, type: 3}
   _waitingText: {fileID: 1466050575}
   _sensors:
-  - {fileID: 780781211}
-  - {fileID: 1622745627}
+  - {fileID: 0}
+  - {fileID: 0}
   _spawns:
   - {fileID: 1080901203}
   - {fileID: 1213756316}
@@ -1405,7 +1082,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2005633026
 MonoBehaviour:
@@ -1575,7 +1252,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2031434958
 GameObject:
@@ -1610,5 +1287,5 @@ Transform:
   - {fileID: 1019805620}
   - {fileID: 1385223561}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

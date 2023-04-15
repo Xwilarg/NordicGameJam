@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682f2c9491ead0c4cb655f7bd2e41db0, type: 3}
   m_Name: PlayerInfo
   m_EditorClassIdentifier: 
-  BaseSpeed: 300
+  BaseSpeed: 400
+  SlowDownMultiplier: 0.75
   PressionModifier:
     serializedVersion: 2
     m_Curve:
