@@ -1,0 +1,19 @@
+{
+    "playLEGO": "Play with LEGO® Kit",
+    "playKeyboard": "Play with Keyboard",
+    "credits": "Credits",
+    "quit": "Quit",
+
+    "legoHub": "LEGO® HUB",
+    "legoLight": "LEGO® Color Sensor",
+    "legoButton": "LEGO® Button",
+    "ok": "OK",
+    "waiting": "Pending...",
+
+    "artAndAudio": "Art & Audio",
+    "techArtist": "VFX Artist",
+    "programming": "Programming",
+    "gameDesign": "Game Design",
+
+    "disclaimer": "LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this game"
+}
