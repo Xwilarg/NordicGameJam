@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4188083830557165783}
   - component: {fileID: 8356113808895294324}
   - component: {fileID: 2106498230393814216}
+  - component: {fileID: 647306464699687714}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -86,6 +87,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8356113808895294324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722639058099846323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316245593924e68429eaa54878edc239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _info: {fileID: 11400000, guid: c05e2f69b51237d4bb8bf79029bff8d9, type: 2}
+--- !u!114 &2106498230393814216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722639058099846323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc23ea89ace76c45b8dc44086d16572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PathVisualPrefab: {fileID: 5010374603543864546, guid: 3563ac2dbe12a054f9f76d6f543cb5e6, type: 3}
+  PathSpeed: 0
+  Bounds: {fileID: 0}
 --- !u!61 &647306464699687714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131,29 +160,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 14.84, y: 20.27}
   m_EdgeRadius: 0
---- !u!114 &8356113808895294324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3722639058099846323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 316245593924e68429eaa54878edc239, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _info: {fileID: 11400000, guid: c05e2f69b51237d4bb8bf79029bff8d9, type: 2}
---- !u!114 &2106498230393814216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3722639058099846323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adc23ea89ace76c45b8dc44086d16572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PathVisualPrefab: {fileID: 5010374603543864546, guid: 3563ac2dbe12a054f9f76d6f543cb5e6, type: 3}
