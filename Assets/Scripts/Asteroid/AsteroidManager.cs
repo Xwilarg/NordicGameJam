@@ -1,6 +1,6 @@
+using NordicGameJam.SO;
 using System.Collections;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace NordicGameJam.Asteroid
 {
@@ -10,30 +10,32 @@ namespace NordicGameJam.Asteroid
         private GameObject asteroidPrefab;
 
         [SerializeField]
-        private float spawnInterval = 3.0f;
+        private AsteroidInfo _info;
 
         [SerializeField]
         private Transform _temple;
 
-        private float _speed = .9f;
-
         private void Awake()
         {
-            StartCoroutine(Spawn(spawnInterval, asteroidPrefab));
+            StartCoroutine(Spawn(_info.SpawnInternal, asteroidPrefab));
         }
 
         private IEnumerator Spawn(float interval, GameObject asteroid)
         {
             yield return new WaitForSeconds(interval);
             float radius = 25.0f;
-            Vector3 randomPosition = UnityEngine.Random.onUnitSphere * radius;
+            Vector3 randomPosition = Random.onUnitSphere * radius;
+            if (randomPosition.x < 0f)
+            {
+                randomPosition = new(-randomPosition.x, randomPosition.y);
+            }
             randomPosition += transform.position;
             randomPosition.z = 0.0f;
 
             var go = Instantiate(asteroid, new Vector2(randomPosition.x, randomPosition.y), Quaternion.identity);
 
             var direction = (_temple.position - go.transform.position).normalized;
-            go.GetComponent<Rigidbody2D>().velocity = direction * _speed;
+            go.GetComponent<Rigidbody2D>().velocity = direction * _info.Speed;
             yield return Spawn(interval, asteroid);
         }
 

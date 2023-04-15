@@ -6,7 +6,7 @@ namespace NordicGameJam.Asteroid
     {
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.collider.CompareTag("Temple"))
+            if (collision.collider.CompareTag("Temple") || collision.collider.CompareTag("Player"))
             {
                 Destroy(gameObject);
             }
