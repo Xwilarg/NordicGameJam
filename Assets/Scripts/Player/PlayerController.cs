@@ -45,7 +45,7 @@ namespace NordicGameJam.Player
             {
                 // Apply force to the player
                 var timeDiff = Mathf.Clamp(Time.unscaledTime - _timer, 0f, _info.MaxPressDuration);
-                _rb.AddForce(transform.right *
+                _rb.AddForce(transform.up *
                     _info.BaseSpeed *
                     _info.PressionModifier.Evaluate(_maxForce / 100f) * // LEGO SDK always return a value between 0 and 100
                     _info.DurationModifier.Evaluate(timeDiff / 3f) *

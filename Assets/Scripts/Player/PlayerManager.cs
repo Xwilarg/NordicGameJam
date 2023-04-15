@@ -36,7 +36,7 @@ namespace NordicGameJam
                     if (e.Connected)
                     {
                         Assert.IsNull(_instances[instanceID].Instance, "Player was already instanciated");
-                        var go = Instantiate(_playerPrefabs, _instances[instanceID].Spawn.position, Quaternion.identity);
+                        var go = Instantiate(_playerPrefabs, _instances[instanceID].Spawn.position, Quaternion.Euler(0f, 0f, -90f));
                         e.Sensor.ForceChanged.AddListener(go.GetComponent<PlayerController>().OnForceChange); // TODO: Unregister event on destroy
                         _instances[instanceID].Instance = go;
                     }
