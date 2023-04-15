@@ -16,6 +16,7 @@ public class Attractor : MonoBehaviour
     private void Awake()
     {
         _infos.FirstOrDefault(x => x.Key == Color).VFX.SetActive(true);
+        gameObject.SetActive(Color == LegoColor.RED);
     }
 
     private void Start()
