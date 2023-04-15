@@ -16,6 +16,8 @@ namespace NordicGameJam.Player
         private bool _aimDirection;
         private float _aimTimer;
 
+        private GravityPath _path;
+
         private float _speed;
         private float _baseAngle;
         private float _startAngle, _endAngle;
@@ -29,6 +31,8 @@ namespace NordicGameJam.Player
 
             _startAngle = _baseAngle - _info.MinAngle;
             _endAngle = _baseAngle + _info.MinAngle;
+
+            _path = gameObject.GetComponent<GravityPath>();
         }
 
         private void Update()
@@ -47,6 +51,8 @@ namespace NordicGameJam.Player
                     y: transform.rotation.eulerAngles.y,
                     z: Mathf.Lerp(_aimDirection ? _startAngle : _endAngle, _aimDirection ? _endAngle : _startAngle, _aimTimer / _info.RotationSpeed)
                 );
+
+                _path.SetVisualMomentum(transform.up);
             }
         }
 
@@ -59,7 +65,7 @@ namespace NordicGameJam.Player
                 _speed = minSpeed;
             }
 
-            gameObject.GetComponent<GravityPath>().PathSpeed = _speed;
+            _path.PathSpeed = _speed;
         }
 
         public void OnForceChange(int value)
