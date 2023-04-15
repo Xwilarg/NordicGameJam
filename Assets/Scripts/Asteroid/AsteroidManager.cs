@@ -28,6 +28,7 @@ namespace NordicGameJam.Asteroid
             randomPosition.z = 0.0f;
 
             var go = Instantiate(asteroid, new Vector2(randomPosition.x, randomPosition.y), Quaternion.identity);
+            go.transform.localScale = Vector3.one * .35f;
 
             var target = _temple.position;
             target.y += Random.Range(-_info.templeOffset, _info.templeOffset);

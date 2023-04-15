@@ -19,7 +19,6 @@ public class GravityPath : MonoBehaviour
 
     private const float G = 1f;
 
-    private float minX, maxX, minY, maxY;
     private Camera _cam;
 
     private void Awake()
@@ -29,12 +28,12 @@ public class GravityPath : MonoBehaviour
     }
 
     // http://answers.unity.com/answers/502236/view.html
-    private Bounds CalculateBounds()
+    public static Bounds CalculateBounds(Camera cam)
     {
-        float screenAspect = (float)Screen.width / (float)Screen.height;
-        float cameraHeight = _cam.orthographicSize * 2;
+        float screenAspect = Screen.width / (float)Screen.height;
+        float cameraHeight = cam.orthographicSize * 2;
         Bounds bounds = new(
-            _cam.transform.position,
+            cam.transform.position,
             new Vector3(cameraHeight * screenAspect, cameraHeight, 0));
         return bounds;
     }
@@ -100,7 +99,7 @@ public class GravityPath : MonoBehaviour
             m += dir * (1/(dir.magnitude*dir.magnitude)) * G * att.Strenght * deltaT;
         }
 
-        var bounds = CalculateBounds();
+        var bounds = CalculateBounds(_cam);
         bounds.min += new Vector3(2f, 2f);
         bounds.max -= new Vector3(2f, 2f);
         (bool hitBounds, Vector3 normal) = BoundsHit(pos+(m*deltaT), bounds);
