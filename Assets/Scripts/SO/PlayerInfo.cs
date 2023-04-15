@@ -19,9 +19,6 @@ namespace NordicGameJam.SO
         [Tooltip("How long should we press to get the max speed")]
         public float MaxPressDuration;
 
-        [Tooltip("Curve evolution of the speed depending of how long we press the button")]
-        public AnimationCurve DurationModifier;
-
         [Range(0f, 1f)]
         [Tooltip("Drag applied to the player")]
         public float LinearDrag;
