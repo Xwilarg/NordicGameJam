@@ -1,10 +1,9 @@
 using NordicGameJam.Player;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace NordicGameJam
 {
@@ -16,16 +15,20 @@ namespace NordicGameJam
         [SerializeField]
         private Transform[] _spawns;
 
+        [SerializeField]
+        private Sprite[] _sprites;
+
         private SensorInfo[] _sensors;
 
         // Reference sensor ID to gameobject
         private readonly Dictionary<int, ActivePlayerInfo> _instances = new();
 
-        private void Connect(SensorInfo sensor)
+        private void Connect(SensorInfo sensor, int index)
         {
             var instanceID = sensor.GetInstanceID();
             Assert.IsNull(_instances[instanceID].Instance, "Player was already instanciated");
             var go = Instantiate(_playerPrefabs, _instances[instanceID].Spawn.position, Quaternion.Euler(0f, 0f, -90f));
+            go.GetComponent<SpriteRenderer>().sprite = _sprites[index % _sprites.Length];
             sensor.ForceSensor.ForceChanged.AddListener(go.GetComponent<PlayerController>().OnForceChange); // TODO: Unregister event on destroy
             _instances[instanceID].Instance = go;
         }
@@ -39,7 +42,7 @@ namespace NordicGameJam
                 _instances.Add(s.GetInstanceID(), new() { Spawn = _spawns[i % _spawns.Length] });
                 if (!LEGOManager.Instance.CanUseKeyboard) // Mean we are in 'LEGO' mode
                 {
-                    Connect(s);
+                    Connect(s, i);
                 }
             }
         }
@@ -66,7 +69,7 @@ namespace NordicGameJam
                 }
                 else
                 {
-                    Connect(s);
+                    Connect(s, _instances.Count(x => x.Value.Instance != null));
                 }
             }
             else if (value.phase == InputActionPhase.Canceled)
