@@ -12,7 +12,7 @@ namespace NordicGameJam.Player
         private float _timer;
 
         // Things when we didn't move yet
-        private bool _didMove;
+        public bool DidMove { private set; get; }
         private bool _aimDirection;
         private float _aimTimer;
 
@@ -22,10 +22,21 @@ namespace NordicGameJam.Player
         private float _baseAngle;
         private float _startAngle, _endAngle;
 
+        [SerializeField]
+        private Transform _rotationTarget;
+
+        public Transform RotationTarget => _rotationTarget;
+
+        [SerializeField]
+        private Transform _powerBar;
+
+        private float _power;
+        private float _currForce;
+
         private void Awake()
         {
             _timer = Time.unscaledTime;
-            _didMove = false;
+            DidMove = false;
 
             _baseAngle = transform.rotation.eulerAngles.z;
             _aimTimer = _info.RotationSpeed;
@@ -34,11 +45,17 @@ namespace NordicGameJam.Player
             _endAngle = _baseAngle + _info.MinAngle;
 
             _path = gameObject.GetComponent<GravityPath>();
+            _powerBar.localScale = new Vector3(0f, _powerBar.localScale.y, _powerBar.localScale.z);
         }
 
         private void Update()
         {
-            if (!_didMove)
+            _power += Mathf.Clamp(Time.deltaTime *
+                _info.PressionModifier.Evaluate(_currForce / 100f) / // LEGO SDK always return a value between 0 and 100
+                _info.MaxPressDuration, 0f, _info.MaxPressDuration);
+            _powerBar.localScale = new Vector3(_power / _info.MaxPressDuration, _powerBar.localScale.y, _powerBar.localScale.z);
+
+            if (!DidMove)
             {
                 _aimTimer -= Time.deltaTime;
                 if (_aimTimer <= 0)
@@ -47,13 +64,19 @@ namespace NordicGameJam.Player
                     _aimDirection = !_aimDirection;
                 }
 
-                transform.rotation = Quaternion.Euler(
+                _rotationTarget.rotation = Quaternion.Euler(
                     x: transform.rotation.eulerAngles.x,
                     y: transform.rotation.eulerAngles.y,
                     z: Mathf.Lerp(_aimDirection ? _startAngle : _endAngle, _aimDirection ? _endAngle : _startAngle, _aimTimer / _info.RotationSpeed)
                 );
 
-                _path.SetVisualMomentum(transform.up);
+                _path.SetVisualMomentum(_rotationTarget.up);
+                _powerBar.localScale = new Vector3(0f, _powerBar.localScale.y, _powerBar.localScale.z);
+            }
+            else
+            {
+                float angle = Mathf.Atan2(_path.CurrentMomentum.y, _path.CurrentMomentum.x) * Mathf.Rad2Deg;
+                _rotationTarget.rotation = Quaternion.Euler(0f, 0f, angle - 90);
             }
         }
 
@@ -66,8 +89,7 @@ namespace NordicGameJam.Player
                 _speed = minSpeed;
             }
 
-            if(_didMove)
-                _path.PathSpeed = _speed;
+            _path.PathSpeed = _speed;
         }
 
         public void OnForceChange(int value)
@@ -78,25 +100,26 @@ namespace NordicGameJam.Player
                 {
                     // Apply force to the player
                     var timeDiff = Mathf.Clamp(Time.unscaledTime - _timer, 0f, _info.MaxPressDuration);
-                    _speed += _info.BaseSpeed *
-                            _info.PressionModifier.Evaluate(_maxForce / 100f) * // LEGO SDK always return a value between 0 and 100
-                            _info.DurationModifier.Evaluate(timeDiff / 3f) *
-                            Time.fixedDeltaTime;
+                    _speed += _info.BaseSpeed * _power * Time.fixedDeltaTime;
 
-                    _didMove = true;
+                    DidMove = true;
                 }
 
                 // Reset stuffs
                 _maxForce = 0;
                 _timer = Time.unscaledTime;
             }
-            else if (value > _maxForce)
+            else
             {
-                if (_maxForce == 0) // Slow down the player while we are pressing the button
+                if (value > _maxForce)
                 {
-                    _speed = _speed * _info.SlowDownMultiplier;
+                    if (_maxForce == 0) // Slow down the player while we are pressing the button
+                    {
+                        _speed = _speed * _info.SlowDownMultiplier;
+                    }
+                    _maxForce = value;
                 }
-                _maxForce = value;
+                _currForce = value;
             }
         }
     }

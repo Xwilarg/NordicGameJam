@@ -14,3 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 1.2
   SpawnInternal: 3
+  _minX: 12
+  _maxX: 20
+  _minY: -6
+  _maxY: 6
+  templeOffset: 5

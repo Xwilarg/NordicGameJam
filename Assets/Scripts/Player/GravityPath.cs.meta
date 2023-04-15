@@ -5,6 +5,8 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - PathVisualPrefab: {fileID: 5010374603543864546, guid: 3563ac2dbe12a054f9f76d6f543cb5e6, type: 3}
+  - Bounds: {instanceID: 0}
+  - _info: {fileID: 11400000, guid: c05e2f69b51237d4bb8bf79029bff8d9, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

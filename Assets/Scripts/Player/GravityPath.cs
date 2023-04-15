@@ -1,16 +1,43 @@
+using NordicGameJam.Player;
 using System.Collections.Generic;
+using NordicGameJam.SO;
 using UnityEngine;
 
 public class GravityPath : MonoBehaviour
 {
     public GameObject PathVisualPrefab;
     public float PathSpeed;
-    public BoxCollider2D Bounds;
+    public Vector3 CurrentMomentum {get => PathMomentum;}
+
+    [SerializeField]
+    private PlayerInfo _info;
 
     private Transform PathVisual;
-    private Vector3 PathMomentum;
+    public Vector3 PathMomentum { private set; get; }
+
+    private PlayerController _pc;
 
     private const float G = 1f;
+
+    private float minX, maxX, minY, maxY;
+    private Camera _cam;
+
+    private void Awake()
+    {
+        _pc = GetComponent<PlayerController>();
+        _cam = Camera.main;
+    }
+
+    // http://answers.unity.com/answers/502236/view.html
+    private Bounds CalculateBounds()
+    {
+        float screenAspect = (float)Screen.width / (float)Screen.height;
+        float cameraHeight = _cam.orthographicSize * 2;
+        Bounds bounds = new(
+            _cam.transform.position,
+            new Vector3(cameraHeight * screenAspect, cameraHeight, 0));
+        return bounds;
+    }
 
     void Start()
     {
@@ -22,8 +49,11 @@ public class GravityPath : MonoBehaviour
 
     void FixedUpdate()
     {
-        RenderPath(2);
-        (transform.position, PathMomentum) = PathDelta(transform.position, PathMomentum, Time.fixedDeltaTime*PathSpeed, GetAttractors());
+        RenderPath(_info.TimeAhead);
+        if (_pc.DidMove)
+        {
+            (transform.position, PathMomentum) = PathDelta(transform.position, PathMomentum, Time.fixedDeltaTime * PathSpeed, GetAttractors());
+        }
     }
 
     private List<Attractor> GetAttractors()
@@ -42,7 +72,7 @@ public class GravityPath : MonoBehaviour
 
     private void RenderPath(float timeAhead)
     {
-        int pointRange = 100;
+        int pointRange = _info.SimPoints;
         float delta = timeAhead/pointRange;
 
         PathVisual.position = transform.position;
@@ -70,7 +100,10 @@ public class GravityPath : MonoBehaviour
             m += dir * (1/(dir.magnitude*dir.magnitude)) * G * att.Strenght * deltaT;
         }
 
-        (bool hitBounds, Vector3 normal) = BoundsHit(pos+(m*deltaT), Bounds.bounds);
+        var bounds = CalculateBounds();
+        bounds.min += new Vector3(2f, 2f);
+        bounds.max -= new Vector3(2f, 2f);
+        (bool hitBounds, Vector3 normal) = BoundsHit(pos+(m*deltaT), bounds);
         if(hitBounds)
         {
             m = Vector3.Reflect(m, normal);

@@ -65,5 +65,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   LinearDrag: 0.25
   MinSpeed: 1
+  MaxSpeed: 100
   RotationSpeed: 3
   MinAngle: 45
+  TimeAhead: 2
+  SimPoints: 100

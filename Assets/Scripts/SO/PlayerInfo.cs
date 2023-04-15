@@ -19,19 +19,25 @@ namespace NordicGameJam.SO
         [Tooltip("How long should we press to get the max speed")]
         public float MaxPressDuration;
 
-        [Tooltip("Curve evolution of the speed depending of how long we press the button")]
-        public AnimationCurve DurationModifier;
-
         [Range(0f, 1f)]
         [Tooltip("Drag applied to the player")]
         public float LinearDrag;
 
         [Tooltip("Speed the player won't go under")]
         public float MinSpeed;
+        public float MaxSpeed;
 
         [Header("Aim")]
         public float RotationSpeed;
 
         public float MinAngle;
+
+        [Header("Path Ahead")]
+        [Range(0f, 10f)]
+        [Tooltip("Seconds ahead predicted by path")]
+        public float TimeAhead;
+
+        [Tooltip("Number of points imulating the path")]
+        public int SimPoints;
     }
 }
