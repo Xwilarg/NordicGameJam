@@ -1,9 +1,14 @@
 {
-    "play": "Play",
+    "playLEGO": "Play with LEGO® Kit",
+    "playKeyboard": "Play with Keyboard",
     "credits": "Credits",
     "quit": "Quit",
 
-    "waiting": "Please Wait...",
+    "legoHub": "LEGO® HUB",
+    "legoLight": "LEGO® Color Sensor",
+    "legoButton": "LEGO® Button",
+    "ok": "OK",
+    "waiting": "Pending...",
 
     "artAndAudio": "Art & Audio",
     "techArtist": "VFX Artist",
