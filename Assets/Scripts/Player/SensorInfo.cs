@@ -17,7 +17,6 @@ namespace NordicGameJam.Player
 
         public void OnSensorConnected(bool value)
         {
-            Debug.Log(_forceSensor != null);
             OnConnected?.Invoke(this, new() { Connected = value, Sensor = _forceSensor });
         }
 

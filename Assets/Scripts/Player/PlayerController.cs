@@ -29,13 +29,23 @@ namespace NordicGameJam.Player
             }
         }
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.collider.CompareTag("Wall"))
+            {
+                _rb.velocity = collision.relativeVelocity;
+                var angle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            }
+        }
+
         public void OnForceChange(int value)
         {
             if (value == 0) // Propulse player
             {
                 // Apply force to the player
                 var timeDiff = Mathf.Clamp(Time.unscaledTime - _timer, 0f, _info.MaxPressDuration);
-                _rb.AddForce(Vector2.right *
+                _rb.AddForce(transform.right *
                     _info.BaseSpeed *
                     _info.PressionModifier.Evaluate(_maxForce / 100f) * // LEGO SDK always return a value between 0 and 100
                     _info.DurationModifier.Evaluate(timeDiff / 3f) *
