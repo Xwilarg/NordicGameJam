@@ -17,7 +17,7 @@ public class GravityPath : MonoBehaviour
         PathVisual = Instantiate(PathVisualPrefab, transform.position, Quaternion.identity).transform;
         PathVisual.SetParent(transform);
         PathMomentum = Vector3.right;
-        PathSpeed = 1;
+        PathSpeed = 0;
     }
 
     void FixedUpdate()
