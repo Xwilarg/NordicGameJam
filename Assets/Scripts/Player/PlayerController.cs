@@ -12,7 +12,7 @@ namespace NordicGameJam.Player
         private float _timer;
 
         // Things when we didn't move yet
-        private bool _didMove;
+        public bool DidMove { private set; get; }
         private bool _aimDirection;
         private float _aimTimer;
 
@@ -28,7 +28,7 @@ namespace NordicGameJam.Player
         private void Awake()
         {
             _timer = Time.unscaledTime;
-            _didMove = false;
+            DidMove = false;
 
             _baseAngle = transform.rotation.eulerAngles.z;
             _aimTimer = _info.RotationSpeed;
@@ -41,7 +41,7 @@ namespace NordicGameJam.Player
 
         private void Update()
         {
-            if (!_didMove)
+            if (!DidMove)
             {
                 _aimTimer -= Time.deltaTime;
                 if (_aimTimer <= 0)
@@ -74,8 +74,7 @@ namespace NordicGameJam.Player
                 _speed = minSpeed;
             }
 
-            if(_didMove)
-                _path.PathSpeed = _speed;
+            _path.PathSpeed = _speed;
         }
 
         public void OnForceChange(int value)
@@ -91,7 +90,7 @@ namespace NordicGameJam.Player
                             _info.DurationModifier.Evaluate(timeDiff / 3f) *
                             Time.fixedDeltaTime;
 
-                    _didMove = true;
+                    DidMove = true;
                 }
 
                 // Reset stuffs
