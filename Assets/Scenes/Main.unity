@@ -1091,7 +1091,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 5274459195478132398, guid: e8c7481ef9b91b34fbb12fb53529bd29, type: 3}
   _info: {fileID: 11400000, guid: 5252214d996edbd48bb5cff1d490a496, type: 2}
-  _temple: {fileID: 585795719}
+  _temple: {fileID: 585795720}
 --- !u!1 &2020084075
 GameObject:
   m_ObjectHideFlags: 0
