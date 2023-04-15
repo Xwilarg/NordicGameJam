@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8134216888692939136}
   m_Layer: 0
-  m_Name: DarkMatter (Yellow)
+  m_Name: DarkMatter (Green)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   - {fileID: 6981096723988888334}
   - {fileID: 3128191210637729198}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8093429475967369529
 GameObject:
@@ -8881,8 +8881,8 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 0.99816227, g: 1, b: 0.49411762, a: 0.654902}
-        key2: {r: 0.42352942, g: 0.42153382, b: 0.023529397, a: 0}
+        key1: {r: 0.5028216, g: 1, b: 0.49411762, a: 0.654902}
+        key2: {r: 0.023529397, g: 0.42352942, b: 0.038610615, a: 0}
         key3: {r: 0.24614495, g: 0.009344946, b: 0.6603774, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
