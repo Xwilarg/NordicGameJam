@@ -4,9 +4,10 @@
     "credits": "Credits",
     "quit": "Quit",
 
-    "legoHub": "LEGO® HUB",
-    "legoLight": "LEGO® Color Sensor",
-    "legoButton": "LEGO® Button",
+    "legoHub": "LEGO® HUB:",
+    "legoLight": "LEGO® Color Sensor:",
+    "legoButton": "LEGO® Button:",
+    "battery": "Battery:",
     "ok": "OK",
     "waiting": "Pending...",
 

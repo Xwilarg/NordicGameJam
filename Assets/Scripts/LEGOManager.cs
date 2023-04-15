@@ -1,5 +1,6 @@
 ﻿using LEGOWirelessSDK;
 using NordicGameJam.Player;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace NordicGameJam
@@ -34,6 +35,11 @@ namespace NordicGameJam
         public void Disable()
         {
             HUB.enabled = false;
+        }
+
+        public void OnColorChange(int id)
+        {
+            Debug.Log(id);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace NordicGameJam.Menu
     public class MainMenu : MonoBehaviour
     {
         [SerializeField]
-        private TMP_Text _hubStatusText, _lightStatusText, _playersStatusText;
+        private TMP_Text _hubStatusText, _lightStatusText, _playersStatusText, _batteryText;
 
         [SerializeField]
         private Button _playLegoButton;
@@ -45,9 +45,14 @@ namespace NordicGameJam.Menu
 
         private void UpdateText()
         {
-            _hubStatusText.text = $"{Translate.Instance.Tr("legoHub")}: <color={(_hubStatus ? "green" : "red")}>{Translate.Instance.Tr(_hubStatus ? "ok" : "waiting")}</color>";
-            _lightStatusText.text = $"{Translate.Instance.Tr("legoLight")}: <color={(_lightStatus ? "green" : "red")}>{Translate.Instance.Tr(_lightStatus ? "ok" : "waiting")}</color>";
-            _playersStatusText.text = $"{Translate.Instance.Tr("legoButton")}: <color={(_playerCount > 0 ? "green" : "red")}>{_playerCount}</color>";
+            _hubStatusText.text = $"{Translate.Instance.Tr("legoHub")} <color={(_hubStatus ? "green" : "red")}>{Translate.Instance.Tr(_hubStatus ? "ok" : "waiting")}</color>";
+            _lightStatusText.text = $"{Translate.Instance.Tr("legoLight")} <color={(_lightStatus ? "green" : "red")}>{Translate.Instance.Tr(_lightStatus ? "ok" : "waiting")}</color>";
+            _playersStatusText.text = $"{Translate.Instance.Tr("legoButton")} <color={(_playerCount > 0 ? "green" : "red")}>{_playerCount}</color>";
+            _batteryText.gameObject.SetActive(_hubStatus);
+            if (_hubStatus)
+            {
+                _batteryText.text = $"{Translate.Instance.Tr("battery")} {LEGOManager.Instance.HUB.BatteryLevel}%";
+            }
 
             _playLegoButton.interactable = _hubStatus && _lightStatus && _playerCount > 0;
         }
