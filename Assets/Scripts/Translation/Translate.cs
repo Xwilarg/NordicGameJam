@@ -10,7 +10,8 @@ namespace NordicGameJam.Translation
         private readonly string[] _languages =
         {
             "english",
-            "french"
+            "french",
+            "spanish"
         };
 
         private Translate()

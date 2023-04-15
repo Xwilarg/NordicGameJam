@@ -14,6 +14,11 @@ namespace NordicGameJam
             Instance = this;
         }
 
+        private void Start()
+        {
+            LEGOManager.Instance.ChangeLEDColor(Color.white);
+        }
+
         public event EventHandler<ColorEventArgs> OnColorChanged;
 
         public void ChangeColor(LegoColor newColor)
