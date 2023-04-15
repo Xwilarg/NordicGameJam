@@ -10,9 +10,6 @@ namespace NordicGameJam.Asteroid
         private GameObject _asteroidPrefab;
 
         [SerializeField]
-        private Sprite[] _asteroidSprites;
-
-        [SerializeField]
         private AsteroidInfo _info;
 
         [SerializeField]
@@ -41,7 +38,6 @@ namespace NordicGameJam.Asteroid
             var rb = go.GetComponent<Rigidbody2D>();
             rb.velocity = direction * _info.Speed;
             rb.angularVelocity = Random.Range(10f, 20f);
-            go.GetComponent<SpriteRenderer>().sprite = _asteroidSprites[Random.Range(0, _asteroidSprites.Length)];
             yield return Spawn(interval, asteroid);
         }
 
