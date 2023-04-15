@@ -18,6 +18,8 @@ namespace NordicGameJam
         [SerializeField]
         private Sprite[] _sprites;
 
+        public BoxCollider2D Area;
+
         private SensorInfo[] _sensors;
 
         // Reference sensor ID to gameobject
@@ -29,6 +31,7 @@ namespace NordicGameJam
             Assert.IsNull(_instances[instanceID].Instance, "Player was already instanciated");
             var go = Instantiate(_playerPrefabs, _instances[instanceID].Spawn.position, Quaternion.Euler(0f, 0f, -90f));
             go.GetComponentInChildren<SpriteRenderer>().sprite = _sprites[index % _sprites.Length];
+            go.GetComponent<GravityPath>().Bounds = Area;
             sensor.ForceSensor.ForceChanged.AddListener(go.GetComponent<PlayerController>().OnForceChange); // TODO: Unregister event on destroy
             _instances[instanceID].Instance = go;
         }

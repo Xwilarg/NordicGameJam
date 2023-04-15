@@ -28,6 +28,7 @@ namespace NordicGameJam.Player
         private void Awake()
         {
             _timer = Time.unscaledTime;
+            _didMove = false;
 
             _baseAngle = transform.rotation.eulerAngles.z;
             _aimTimer = _info.RotationSpeed;
@@ -68,7 +69,8 @@ namespace NordicGameJam.Player
                 _speed = minSpeed;
             }
 
-            _path.PathSpeed = _speed;
+            if(_didMove)
+                _path.PathSpeed = _speed;
         }
 
         public void OnForceChange(int value)
