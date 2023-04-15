@@ -15,6 +15,11 @@ namespace NordicGameJam.Asteroid
         [SerializeField]
         private Transform _temple;
 
+        private float _minX = 12.0f;
+        private float _maxX = 20.0f;
+        private float _minY = -6.0f;
+        private float _maxY = 6.0f;
+
         private void Awake()
         {
             StartCoroutine(Spawn(_info.SpawnInternal, _asteroidPrefab));
@@ -23,12 +28,7 @@ namespace NordicGameJam.Asteroid
         private IEnumerator Spawn(float interval, GameObject asteroid)
         {
             yield return new WaitForSeconds(interval);
-            float radius = 25.0f;
-            Vector3 randomPosition = Random.onUnitSphere * radius;
-            if (randomPosition.x < 0f)
-            {
-                randomPosition = new(-randomPosition.x, randomPosition.y);
-            }
+            Vector3 randomPosition = new Vector3( Random.Range(_minX, _maxX), Random.Range(_minY, _maxY), 0.0f);
             randomPosition += transform.position;
             randomPosition.z = 0.0f;
 
@@ -39,11 +39,6 @@ namespace NordicGameJam.Asteroid
             rb.velocity = direction * _info.Speed;
             rb.angularVelocity = Random.Range(10f, 20f);
             yield return Spawn(interval, asteroid);
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawWireSphere(transform.position, 25.0f);
         }
     }
 }
