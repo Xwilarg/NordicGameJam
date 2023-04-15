@@ -1,5 +1,20 @@
 {
-    "waiting": "Merci de Patienter...",
+    "playLEGO": "Jouer avec le kit LEGO®",
+    "playKeyboard": "Jouer avec le clavier",
+    "credits": "Crédits",
+    "quit": "Quitter",
+
+    "legoHub": "Interface LEGO® :",
+    "legoLight": "Détecteur de couleurs LEGO®:",
+    "legoButton": "Button LEGO®:",
+    "battery": "Batterie :",
+    "ok": "OK",
+    "waiting": "En attente...",
+
+    "artAndAudio": "Art & Audio",
+    "techArtist": "Artiste VFX",
+    "programming": "Programmation",
+    "gameDesign": "Game Design",
 
     "disclaimer": "LEGO® est une marque commerciale du groupe LEGO qui ne sponsorise, n'autorise et ne soutient pas ce jeu"
 }
