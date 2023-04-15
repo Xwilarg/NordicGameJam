@@ -6,6 +6,7 @@ public class GravityPath : MonoBehaviour
     public GameObject PathVisualPrefab;
     public float PathSpeed;
     public BoxCollider2D Bounds;
+    public Vector3 CurrentMomentum {get => PathMomentum;}
 
     private Transform PathVisual;
     private Vector3 PathMomentum;
