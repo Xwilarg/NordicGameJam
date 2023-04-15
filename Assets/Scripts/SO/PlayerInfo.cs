@@ -9,6 +9,10 @@ namespace NordicGameJam.SO
         [Tooltip("Base speed of the player")]
         public float BaseSpeed;
 
+        [Tooltip("Speed when we are slowed down (aka pressing the button)")]
+        [Range(0f, 1f)]
+        public float SlowDownMultiplier;
+
         [Tooltip("Curve evolution of the speed depending of how much we press the button")]
         public AnimationCurve PressionModifier;
 

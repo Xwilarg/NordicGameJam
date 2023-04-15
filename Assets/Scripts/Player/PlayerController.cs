@@ -56,9 +56,11 @@ namespace NordicGameJam.Player
 
         private void FixedUpdate()
         {
-            if (_rb.velocity.magnitude < _info.MinSpeed)
+            var minSpeed = _info.MinSpeed * (_maxForce > 0 ? _info.SlowDownMultiplier : 1f);
+            // Player has a minimal speed it can't go under
+            if (_rb.velocity.magnitude < minSpeed)
             {
-                _rb.velocity = _rb.velocity.normalized * _info.MinSpeed;
+                _rb.velocity = _rb.velocity.normalized * minSpeed;
             }
         }
 
@@ -66,6 +68,7 @@ namespace NordicGameJam.Player
         {
             if (collision.collider.CompareTag("Wall"))
             {
+                // Adjust player rotation when hitting a wall
                 var angle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - _baseAngle - 180f));
             }
@@ -95,6 +98,10 @@ namespace NordicGameJam.Player
             }
             else if (value > _maxForce)
             {
+                if (_maxForce == 0) // Slow down the player while we are pressing the button
+                {
+                    _rb.velocity = _rb.velocity * _info.SlowDownMultiplier;
+                }
                 _maxForce = value;
             }
         }
