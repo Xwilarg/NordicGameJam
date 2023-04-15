@@ -1,8 +1,5 @@
 {
   "dependencies": {
-    "com.lego.creatures": "0.0.6-preview",
-    "com.lego.minifig": "1.2.0",
-    "com.lego.modelimporter": "0.10.1",
     "com.lego.wirelesssdk": "0.1.2",
     "com.unity.ai.navigation": "1.1.1",
     "com.unity.collab-proxy": "2.0.3",
