@@ -76,6 +76,10 @@ namespace NordicGameJam.Player
             {
                 _speed = minSpeed;
             }
+            if (_speed > _info.MaxSpeed)
+            {
+                _speed = _info.MaxSpeed;
+            }
 
             _path.PathSpeed = _speed;
         }

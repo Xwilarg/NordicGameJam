@@ -28,6 +28,7 @@ namespace NordicGameJam.SO
 
         [Tooltip("Speed the player won't go under")]
         public float MinSpeed;
+        public float MaxSpeed;
 
         [Header("Aim")]
         public float RotationSpeed;
