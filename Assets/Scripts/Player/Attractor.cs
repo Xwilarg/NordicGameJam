@@ -1,6 +1,5 @@
-    using System;
-using System.Collections;
-using System.Collections.Generic;
+using NordicGameJam;
+using NordicGameJam.Hole;
 using UnityEngine;
 
 public class Attractor : MonoBehaviour
@@ -8,8 +7,13 @@ public class Attractor : MonoBehaviour
     public int Strenght;
     public bool Activated;
 
-    void Start()
+    public LegoColor Color;
+
+    private void Start()
     {
-        
+        ColorManager.Instance.OnColorChanged += (_, e) =>
+        {
+            gameObject.SetActive(e.Color == Color);
+        };
     }
 }
