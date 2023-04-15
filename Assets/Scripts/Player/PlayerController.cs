@@ -1,12 +1,55 @@
-﻿using UnityEngine;
+﻿using NordicGameJam.SO;
+using UnityEngine;
 
 namespace NordicGameJam.Player
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField]
+        private PlayerInfo _info;
+
+        private Rigidbody2D _rb;
+
+        private int _maxForce;
+        private float _timer;
+
+        private void Awake()
+        {
+            _rb = GetComponent<Rigidbody2D>();
+            _rb.drag = _info.LinearDrag;
+            _timer = Time.unscaledTime;
+        }
+
+        private void FixedUpdate()
+        {
+            if (_rb.velocity.magnitude < _info.MinSpeed)
+            {
+                _rb.velocity = _rb.velocity.normalized * _info.MinSpeed;
+            }
+        }
+
         public void OnForceChange(int value)
         {
-            Debug.Log(value);
+            if (value == 0) // Propulse player
+            {
+                // Apply force to the player
+                var timeDiff = Mathf.Clamp(Time.unscaledTime - _timer, 0f, _info.MaxPressDuration);
+                _rb.AddForce(Vector2.right *
+                    _info.BaseSpeed *
+                    _info.PressionModifier.Evaluate(_maxForce / 100f) * // LEGO SDK always return a value between 0 and 100
+                    _info.DurationModifier.Evaluate(timeDiff / 3f) *
+                    Time.fixedDeltaTime
+                    , ForceMode2D.Impulse);
+
+                // Reset stuffs
+                _maxForce = 0;
+                _timer = Time.unscaledTime;
+            }
+            else if (value > _maxForce)
+            {
+                _maxForce = value;
+            }
         }
     }
 }
