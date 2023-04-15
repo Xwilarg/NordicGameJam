@@ -100,7 +100,7 @@ namespace NordicGameJam.Player
             {
                 if (_maxForce == 0) // Slow down the player while we are pressing the button
                 {
-                    _rb.velocity = _rb.velocity * _info.SlowDownMultiplier;
+                    _rb.velocity *= _info.SlowDownMultiplier;
                 }
                 _maxForce = value;
             }
