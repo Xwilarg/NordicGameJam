@@ -1,3 +1,4 @@
+using NordicGameJam.Player;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,14 @@ public class GravityPath : MonoBehaviour
     private Transform PathVisual;
     private Vector3 PathMomentum;
 
+    private PlayerController _pc;
+
     private const float G = 1f;
+
+    private void Awake()
+    {
+        _pc = GetComponent<PlayerController>();
+    }
 
     void Start()
     {
@@ -23,7 +31,10 @@ public class GravityPath : MonoBehaviour
     void FixedUpdate()
     {
         RenderPath(2);
-        (transform.position, PathMomentum) = PathDelta(transform.position, PathMomentum, Time.fixedDeltaTime*PathSpeed, GetAttractors());
+        if (_pc.DidMove)
+        {
+            (transform.position, PathMomentum) = PathDelta(transform.position, PathMomentum, Time.fixedDeltaTime * PathSpeed, GetAttractors());
+        }
     }
 
     private List<Attractor> GetAttractors()
