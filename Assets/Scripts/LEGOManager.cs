@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using LEGOWirelessSDK;
+using NordicGameJam.Player;
+using UnityEngine;
 
 namespace NordicGameJam
 {
@@ -6,8 +8,18 @@ namespace NordicGameJam
     {
         public static LEGOManager Instance { private set; get; }
 
+        public HubBase HUB { private set; get; }
+
+        public SensorInfo[] Sensors => GetComponentsInChildren<SensorInfo>();
+
+        public bool IsLEGOEnabled => _debugMode || HUB.enabled;
+
+        [SerializeField]
+        private bool _debugMode;
+
         private void Awake()
         {
+            HUB = GetComponent<HubBase>();
             if (Instance != null && Instance.GetInstanceID() != GetInstanceID())
             {
                 Destroy(gameObject);
@@ -15,7 +27,13 @@ namespace NordicGameJam
             else if (Instance == null)
             {
                 Instance = this;
+                DontDestroyOnLoad(gameObject);
             }
+        }
+
+        public void Disable()
+        {
+            HUB.enabled = false;
         }
     }
 }

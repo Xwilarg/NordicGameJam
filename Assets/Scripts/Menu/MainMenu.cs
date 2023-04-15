@@ -24,7 +24,7 @@ namespace NordicGameJam.Menu
 
         public void PlayKeyboard()
         {
-            Destroy(LEGOManager.Instance.gameObject);
+            LEGOManager.Instance.Disable();
             SceneManager.LoadScene("Main");
         }
 
@@ -46,8 +46,8 @@ namespace NordicGameJam.Menu
         private void UpdateText()
         {
             _hubStatusText.text = $"{Translate.Instance.Tr("legoHub")}: <color={(_hubStatus ? "green" : "red")}>{Translate.Instance.Tr(_hubStatus ? "ok" : "waiting")}</color>";
-            _lightStatusText.text = $"{Translate.Instance.Tr("legoHub")}: <color={(_lightStatus ? "green" : "red")}>{Translate.Instance.Tr(_lightStatus ? "ok" : "waiting")}</color>";
-            _playersStatusText.text = $"{Translate.Instance.Tr("legoHub")}: <color={(_playerCount > 0 ? "green" : "red")}>{_playerCount}</color>";
+            _lightStatusText.text = $"{Translate.Instance.Tr("legoLight")}: <color={(_lightStatus ? "green" : "red")}>{Translate.Instance.Tr(_lightStatus ? "ok" : "waiting")}</color>";
+            _playersStatusText.text = $"{Translate.Instance.Tr("legoButton")}: <color={(_playerCount > 0 ? "green" : "red")}>{_playerCount}</color>";
 
             _playLegoButton.interactable = _hubStatus && _lightStatus && _playerCount > 0;
         }

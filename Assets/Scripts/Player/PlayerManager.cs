@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace NordicGameJam
 {
@@ -12,19 +13,16 @@ namespace NordicGameJam
         private GameObject _playerPrefabs;
 
         [SerializeField]
-        private GameObject _waitingText;
-
-        [SerializeField]
-        private SensorInfo[] _sensors;
-
-        [SerializeField]
         private Transform[] _spawns;
+
+        private SensorInfo[] _sensors;
 
         // Reference sensor ID to gameobject
         private readonly Dictionary<int, ActivePlayerInfo> _instances = new();
 
         private void Start()
         {
+            _sensors = LEGOManager.Instance.Sensors;
             for (int i = 0; i < _sensors.Length; i++)
             {
                 var s = _sensors[i];
@@ -55,14 +53,6 @@ namespace NordicGameJam
             return _instances[id].Instance != null;
         }
 
-        public void OnLegoDeviceConnected(bool value)
-        {
-            if (value)
-            {
-                _waitingText.SetActive(false);
-            }
-        }
-
         public void OnButton1Press(InputAction.CallbackContext value)
             => OnPlayerInput(0, value);
 
@@ -71,17 +61,12 @@ namespace NordicGameJam
 
         public void OnPlayerInput(int playerID, InputAction.CallbackContext value)
         {
-            if (value.phase == InputActionPhase.Started)
+            if (value.phase == InputActionPhase.Started && !LEGOManager.Instance.IsLEGOEnabled)
             {
                 var s = _sensors[playerID];
                 if (IsConnected(s.InstanceID))
                 {
                     s.ForceOverride(100);
-                }
-                else
-                {
-                    OnLegoDeviceConnected(true);
-                    s.ConnectOverride();
                 }
             }
             else if (value.phase == InputActionPhase.Canceled)
