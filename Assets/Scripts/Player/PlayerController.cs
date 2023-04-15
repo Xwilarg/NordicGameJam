@@ -104,7 +104,6 @@ namespace NordicGameJam.Player
                 if (_maxForce > 0)
                 {
                     // Apply force to the player
-                    var timeDiff = Mathf.Clamp(Time.unscaledTime - _timer, 0f, _info.MaxPressDuration);
                     _speed += _info.BaseSpeed * _power * Time.fixedDeltaTime;
 
                     DidMove = true;
@@ -112,7 +111,6 @@ namespace NordicGameJam.Player
 
                 // Reset stuffs
                 _maxForce = 0;
-                _timer = Time.unscaledTime;
                 _powerBar.localScale = new Vector3(0f, _powerBar.localScale.y, _powerBar.localScale.z);
                 _power = 0f;
             }
