@@ -11,6 +11,9 @@ namespace NordicGameJam
         private GameObject _playerPrefabs;
 
         [SerializeField]
+        private GameObject _waitingText;
+
+        [SerializeField]
         private SensorInfo[] _sensors;
 
         // Reference sensor ID to gameobject
@@ -35,6 +38,14 @@ namespace NordicGameJam
                         _instances.Remove(e.InstanceID);
                     }
                 };
+            }
+        }
+
+        public void OnLegoDeviceConnected(bool value)
+        {
+            if (value)
+            {
+                _waitingText.SetActive(false);
             }
         }
     }
