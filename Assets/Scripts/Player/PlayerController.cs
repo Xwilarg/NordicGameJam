@@ -51,8 +51,8 @@ namespace NordicGameJam.Player
         private void Update()
         {
             _power += Mathf.Clamp(Time.deltaTime *
-                _info.PressionModifier.Evaluate(_currForce / 100f) / // LEGO SDK always return a value between 0 and 100
-                _info.MaxPressDuration, 0f, _info.MaxPressDuration);
+                _info.PressionModifier.Evaluate(_currForce / 100f), // LEGO SDK always return a value between 0 and 100
+            0f, _info.MaxPressDuration);
             _powerBar.localScale = new Vector3(_power / _info.MaxPressDuration, _powerBar.localScale.y, _powerBar.localScale.z);
 
             if (!DidMove)
@@ -114,6 +114,7 @@ namespace NordicGameJam.Player
                 _maxForce = 0;
                 _timer = Time.unscaledTime;
                 _powerBar.localScale = new Vector3(0f, _powerBar.localScale.y, _powerBar.localScale.z);
+                _power = 0f;
             }
             else
             {
