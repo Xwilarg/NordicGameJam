@@ -1,5 +1,6 @@
 using NordicGameJam;
 using NordicGameJam.Hole;
+using System.Linq;
 using UnityEngine;
 
 public class Attractor : MonoBehaviour
@@ -9,11 +10,24 @@ public class Attractor : MonoBehaviour
 
     public LegoColor Color;
 
+    [SerializeField]
+    private ColorVFXInfo[] _infos;
+
+    private GameObject _vfx;
+
+    private void Awake()
+    {
+        _vfx = _infos.FirstOrDefault(x => x.Key == Color).VFX;
+        _vfx.SetActive(Color == LegoColor.RED);
+        Activated = Color == LegoColor.RED;
+    }
+
     private void Start()
     {
         ColorManager.Instance.OnColorChanged += (_, e) =>
         {
-            gameObject.SetActive(e.Color == Color);
+            _vfx.SetActive(e.Color == Color);
+            Activated = e.Color == Color;
         };
     }
 }
