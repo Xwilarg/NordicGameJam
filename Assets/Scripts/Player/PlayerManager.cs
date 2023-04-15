@@ -16,26 +16,32 @@ namespace NordicGameJam
         [SerializeField]
         private SensorInfo[] _sensors;
 
+        [SerializeField]
+        private Transform[] _spawns;
+
         // Reference sensor ID to gameobject
-        private readonly Dictionary<int, GameObject> _instances = new();
+        private readonly Dictionary<int, ActivePlayerInfo> _instances = new();
 
         private void Awake()
         {
-            foreach (var s in _sensors)
+            for (int i = 0; i < _sensors.Length; i++)
             {
+                var s = _sensors[i];
+                _instances.Add(s.GetInstanceID(), new() { Spawn = _spawns[i % _spawns.Length] });
                 s.OnConnected += (_, e) =>
                 {
+                    Assert.IsFalse(_instances.ContainsKey(i), "Invalid sensor ID");
                     if (e.Connected)
                     {
-                        Assert.IsFalse(_instances.ContainsKey(e.InstanceID), "Player already was instanciated");
-                        var go = Instantiate(_playerPrefabs, Vector3.zero, Quaternion.identity);
-                        _instances.Add(e.InstanceID, go);
+                        Assert.IsNull(_instances[e.InstanceID].Instance, "Player was already instanciated");
+                        var go = Instantiate(_playerPrefabs, _instances[e.InstanceID].Spawn.position, Quaternion.identity);
+                        _instances[e.InstanceID].Instance = go;
                     }
                     else
                     {
-                        Assert.IsTrue(_instances.ContainsKey(e.InstanceID), "Player doesn't exists");
-                        Destroy(_instances[e.InstanceID]);
-                        _instances.Remove(e.InstanceID);
+                        Assert.IsNotNull(_instances[e.InstanceID].Instance, "Player wasn't exists");
+                        Destroy(_instances[e.InstanceID].Instance);
+                        _instances[e.InstanceID].Instance = null;
                     }
                 };
             }
