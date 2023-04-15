@@ -68,9 +68,12 @@ namespace NordicGameJam.Translation
                 {
                     tt.UpdateText();
                 }
+                OnTranslationChange?.Invoke(this, new());
             }
             get => _currentLanguage;
         }
+
+        public event EventHandler OnTranslationChange;
 
         private readonly Dictionary<string, Dictionary<string, string>> _translationData = new();
     }
