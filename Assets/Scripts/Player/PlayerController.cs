@@ -22,9 +22,13 @@ namespace NordicGameJam.Player
         private float _baseAngle;
         private float _startAngle, _endAngle;
 
+        [SerializeField]
+        private Transform _rotationTarget;
+
         private void Awake()
         {
             _timer = Time.unscaledTime;
+            _didMove = false;
 
             _baseAngle = transform.rotation.eulerAngles.z;
             _aimTimer = _info.RotationSpeed;
@@ -46,7 +50,7 @@ namespace NordicGameJam.Player
                     _aimDirection = !_aimDirection;
                 }
 
-                transform.rotation = Quaternion.Euler(
+                _rotationTarget.transform.rotation = Quaternion.Euler(
                     x: transform.rotation.eulerAngles.x,
                     y: transform.rotation.eulerAngles.y,
                     z: Mathf.Lerp(_aimDirection ? _startAngle : _endAngle, _aimDirection ? _endAngle : _startAngle, _aimTimer / _info.RotationSpeed)
@@ -65,7 +69,8 @@ namespace NordicGameJam.Player
                 _speed = minSpeed;
             }
 
-            _path.PathSpeed = _speed;
+            if(_didMove)
+                _path.PathSpeed = _speed;
         }
 
         public void OnForceChange(int value)
