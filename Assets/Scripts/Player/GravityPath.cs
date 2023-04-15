@@ -5,6 +5,7 @@ public class GravityPath : MonoBehaviour
 {
     public GameObject PathVisualPrefab;
     public float PathSpeed;
+    public BoxCollider2D Bounds;
 
     private Transform PathVisual;
     private Vector3 PathMomentum;
@@ -15,7 +16,7 @@ public class GravityPath : MonoBehaviour
     {
         PathVisual = Instantiate(PathVisualPrefab, transform.position, Quaternion.identity).transform;
         PathVisual.SetParent(transform);
-        PathMomentum = Vector3.right * 5;
+        PathMomentum = Vector3.right;
         PathSpeed = 1;
     }
 
@@ -69,6 +70,25 @@ public class GravityPath : MonoBehaviour
             m += dir * (1/(dir.magnitude*dir.magnitude)) * G * att.Strenght * deltaT;
         }
 
+        (bool hitBounds, Vector3 normal) = BoundsHit(pos+(m*deltaT), Bounds.bounds);
+        if(hitBounds)
+        {
+            m = Vector3.Reflect(m, normal);
+        }
+
         return (pos+(m*deltaT), m);
+    }
+
+    private (bool, Vector3) BoundsHit(Vector3 pos, Bounds b)
+    {
+        if(pos.x < b.min.x)
+            return (true, Vector3.right);
+        if(pos.y < b.min.y)
+            return (true, Vector3.up);
+        if(pos.x > b.max.x)
+            return (true, Vector3.left);
+        if(pos.y > b.max.y)
+            return (true, Vector3.down);
+        return (false, Vector3.zero);
     }
 }
