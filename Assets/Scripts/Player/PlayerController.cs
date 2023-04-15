@@ -35,7 +35,7 @@ namespace NordicGameJam.Player
             {
                 _rb.velocity = collision.relativeVelocity;
                 var angle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90f));
             }
         }
 
