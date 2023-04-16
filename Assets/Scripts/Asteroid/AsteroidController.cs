@@ -24,6 +24,7 @@ namespace NordicGameJam.Asteroid
             var go = _children[Random.Range(0, _children.Length)];
             go.SetActive(true);
             _dissolveMat = go.GetComponent<Renderer>().material;
+            _dissolveMat.SetFloat("_Dissolve", _dissolveAmount);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
