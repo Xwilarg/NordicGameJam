@@ -57,6 +57,16 @@ namespace NordicGameJam.Player
             }
         }
 
+        public float TheoricalSpeed01
+        {
+            get
+            {
+                var minSpeed = _info.MinSpeed * (_maxForce > 0 ? _info.SlowDownMultiplier : 1f);
+                var nextSpeed = Mathf.Clamp(_speed + _info.BaseSpeed * _power * Time.fixedDeltaTime, minSpeed, _info.MaxSpeed);
+                return (nextSpeed - minSpeed) / (_info.MaxSpeed - minSpeed);
+            }
+        }
+
         private void Update()
         {
             _power += Mathf.Clamp(Time.deltaTime *

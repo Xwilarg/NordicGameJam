@@ -48,10 +48,10 @@ public class GravityPath : MonoBehaviour
 
     void FixedUpdate()
     {
-        RenderPath(_info.TimeAhead);
+        RenderPath(_info.TimeAhead, _pc.TheoricalSpeed01);
         if (_pc.DidMove)
         {
-            (transform.position, PathMomentum) = PathDelta(transform.position, PathMomentum, Time.fixedDeltaTime * PathSpeed, GetAttractors());
+            (transform.position, PathMomentum) = PathDelta(transform.position, PathMomentum, Time.fixedDeltaTime * PathSpeed, GetAttractors(), _pc.Speed01);
         }
     }
 
@@ -69,7 +69,7 @@ public class GravityPath : MonoBehaviour
         PathMomentum = dir;
     }
 
-    private void RenderPath(float timeAhead)
+    private void RenderPath(float timeAhead, float relSpeed)
     {
         int pointRange = _info.SimPoints;
         float delta = timeAhead/pointRange;
@@ -86,17 +86,17 @@ public class GravityPath : MonoBehaviour
         for(int i=0; i<pointRange; i++)
         {
             line.SetPosition(i, position);
-            (position, momentum) = PathDelta(position, momentum, delta, attractors);
+            (position, momentum) = PathDelta(position, momentum, delta, attractors, relSpeed);
         }
     }
 
-    private (Vector3, Vector3) PathDelta(Vector3 pos, Vector3 momentum, float deltaT, List<Attractor> attractors)
+    private (Vector3, Vector3) PathDelta(Vector3 pos, Vector3 momentum, float deltaT, List<Attractor> attractors, float relSpeed)
     {
         Vector3 m = momentum;
         foreach(Attractor att in attractors)
         {
             Vector3 dir = (att.transform.position - pos).normalized;
-            m += dir * (1/(dir.magnitude*dir.magnitude)) * G * att.Strenght * deltaT * (1f - _pc.Speed01);
+            m += dir * (1/(dir.magnitude*dir.magnitude)) * G * att.Strenght * deltaT * (1f - relSpeed);
         }
 
         Vector3 delta = m*deltaT;
