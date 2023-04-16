@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Temple
+  - ParticleLight
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - Wall
   - Asteroid
   - Temple
-  - 
-  - 
+  - Coin
+  - CoinDisabled
   - 
   - 
   - 

@@ -41,5 +41,7 @@ namespace NordicGameJam.SO
 
         [Tooltip("Number of points imulating the path")]
         public int SimPoints;
+
+        public bool UseForce;
     }
 }

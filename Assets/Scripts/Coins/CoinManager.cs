@@ -1,6 +1,4 @@
 using NordicGameJam.SO;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace NordicGameJam.Coins
@@ -13,17 +11,20 @@ namespace NordicGameJam.Coins
         [SerializeField]
         private GameObject _coinPrefab;
 
+        private int _coinCount;
 
-        // Start is called before the first frame update
-        void Start()
+        public static CoinManager Instance { private set; get; }
+
+        public void Awake()
         {
-            Instantiate(_coinPrefab, new Vector2(_coinInfo.xCoordinate, _coinInfo.yCoordinate), Quaternion.identity);
+            Instance = this;
         }
 
-        // Update is called once per frame
-        void Update()
+        public void Spawn(Vector3 pos, Transform target, bool isActive)
         {
-
+            var go = Instantiate(_coinPrefab, pos, Quaternion.identity);
+            go.layer = isActive ? 14 : 15;
+            go.GetComponent<CoinController>().Target = target;
         }
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1092,6 +1092,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1991131520957588688, guid: 198646a1ca3077f4886e870a47f53292, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2649507562422928623, guid: 198646a1ca3077f4886e870a47f53292, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -1147,6 +1151,14 @@ PrefabInstance:
     - target: {fileID: 5286576024661091004, guid: 198646a1ca3077f4886e870a47f53292, type: 3}
       propertyPath: Color
       value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447225513554064243, guid: 198646a1ca3077f4886e870a47f53292, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6277859624559015401, guid: 198646a1ca3077f4886e870a47f53292, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1435,6 +1447,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1991131520957588688, guid: 198646a1ca3077f4886e870a47f53292, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2649507562422928623, guid: 198646a1ca3077f4886e870a47f53292, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1491,6 +1507,14 @@ PrefabInstance:
       propertyPath: Color
       value: 23
       objectReference: {fileID: 0}
+    - target: {fileID: 5447225513554064243, guid: 198646a1ca3077f4886e870a47f53292, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6277859624559015401, guid: 198646a1ca3077f4886e870a47f53292, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1509,6 +1533,7 @@ GameObject:
   - component: {fileID: 2005633026}
   - component: {fileID: 2005633027}
   - component: {fileID: 2005633028}
+  - component: {fileID: 2005633029}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1727,6 +1752,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5dabf0b4e3334d48bcac191de47b77e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2005633029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005633023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a71fb1f3bcb21cc4aa6463b14c240167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coinInfo: {fileID: 11400000, guid: c385a19e1e69e494fa8ff0865909247a, type: 2}
+  _coinPrefab: {fileID: 3923143606554827692, guid: 4f8cab110f6ff7c4f830d69c676bbfc8, type: 3}
 --- !u!1 &2020084075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,6 +2031,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1991131520957588688, guid: 198646a1ca3077f4886e870a47f53292, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2649507562422928623, guid: 198646a1ca3077f4886e870a47f53292, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -2037,12 +2080,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3172954791243331763, guid: 198646a1ca3077f4886e870a47f53292, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 3172954791243331763, guid: 198646a1ca3077f4886e870a47f53292, type: 3}
       propertyPath: m_Name
       value: Hole
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447225513554064243, guid: 198646a1ca3077f4886e870a47f53292, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6277859624559015401, guid: 198646a1ca3077f4886e870a47f53292, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

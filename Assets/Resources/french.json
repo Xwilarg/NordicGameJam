@@ -4,6 +4,9 @@
     "credits": "Crédits",
     "quit": "Quitter",
 
+    "gameOver": "Partie Fini",
+    "mainMenu": "Menu Principal",
+
     "legoHub": "Interface LEGO® :",
     "legoLight": "Détecteur de couleurs LEGO®:",
     "legoButton": "Button LEGO®:",

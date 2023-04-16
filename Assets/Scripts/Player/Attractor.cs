@@ -9,6 +9,7 @@ public class Attractor : MonoBehaviour
     public bool Activated;
 
     public LegoColor Color;
+    public float MaxAttractionDistance;
 
     [SerializeField]
     private ColorVFXInfo[] _infos;
@@ -18,6 +19,8 @@ public class Attractor : MonoBehaviour
     private void Awake()
     {
         _vfx = _infos.FirstOrDefault(x => x.Key == Color).VFX;
+        _vfx.GetComponentsInChildren<ParticleSystem>().FirstOrDefault(x => x.CompareTag("ParticleLight")).gameObject.SetActive(true);
+
         _vfx.SetActive(Color == LegoColor.RED);
         Activated = Color == LegoColor.RED;
     }

@@ -33,6 +33,8 @@ namespace NordicGameJam.Player
         private float _power;
         private float _currForce;
 
+        public bool UseForce => _info.UseForce;
+
         private void Awake()
         {
             _timer = Time.unscaledTime;
@@ -72,7 +74,7 @@ namespace NordicGameJam.Player
             _power += Mathf.Clamp(Time.deltaTime *
                 _info.PressionModifier.Evaluate(_currForce / 100f), // LEGO SDK always return a value between 0 and 100
             0f, _info.MaxPressDuration);
-            _powerBar.localScale = new Vector3(_power / _info.MaxPressDuration, _powerBar.localScale.y, _powerBar.localScale.z);
+            _powerBar.localScale = new Vector3(Mathf.Clamp01(_power / _info.MaxPressDuration), _powerBar.localScale.y, _powerBar.localScale.z);
 
             if (!DidMove)
             {

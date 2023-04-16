@@ -4,6 +4,9 @@
     "credits": "Credits",
     "quit": "Quit",
 
+    "gameOver": "Game Over",
+    "mainMenu": "Main Menu",
+
     "legoHub": "LEGO® HUB:",
     "legoLight": "LEGO® Color Sensor:",
     "legoButton": "LEGO® Button:",
