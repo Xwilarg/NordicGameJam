@@ -63,12 +63,11 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   MaxPressDuration: 1
-  LinearDrag: 0.5
+  LinearDrag: 0.96
   MinSpeed: 1
-  MaxSpeed: 300
+  MaxSpeed: 20
   RotationSpeed: 3
   MinAngle: 45
-  TimeAhead: 2
+  TimeAhead: 3.43
   SimPoints: 100
   UseForce: 1
-  MaxAttractionDistance: 7

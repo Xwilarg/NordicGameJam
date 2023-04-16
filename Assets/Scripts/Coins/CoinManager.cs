@@ -24,7 +24,9 @@ namespace NordicGameJam.Coins
         {
             var go = Instantiate(_coinPrefab, pos, Quaternion.identity);
             go.layer = isActive ? 14 : 15;
-            go.GetComponent<CoinController>().Target = target;
+            var cc = go.GetComponent<CoinController>();
+            cc.Target = target;
+            cc.Speed = 1f;
         }
     }
 }
