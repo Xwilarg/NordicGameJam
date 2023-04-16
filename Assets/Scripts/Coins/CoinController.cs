@@ -1,4 +1,5 @@
 ﻿using NordicGameJam.Audio;
+using System.Collections;
 using UnityEngine;
 
 namespace NordicGameJam.Coins

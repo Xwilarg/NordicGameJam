@@ -46,6 +46,7 @@ namespace NordicGameJam
         private readonly LegoColor[] _validColors = new[] { LegoColor.BLUE, LegoColor.RED, LegoColor.GREEN };
         public void OnColorChange(int id)
         {
+            Debug.Log(id);
             var color = (LegoColor)id;
             if (_validColors.Contains(color))
             {
