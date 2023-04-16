@@ -1341,8 +1341,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 140116eb2875353408eaf21f42589cd8, type: 2}
-  m_sharedMaterial: {fileID: -3234369488640380045, guid: 140116eb2875353408eaf21f42589cd8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1212545a20e13a5428718c16fad535cd, type: 2}
+  m_sharedMaterial: {fileID: 8170832695315035592, guid: 1212545a20e13a5428718c16fad535cd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1726,7 +1726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435b3c2f7c1107743a9bb582599db5a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _asteroidPrefab: {fileID: 5274459195478132398, guid: e8c7481ef9b91b34fbb12fb53529bd29, type: 3}
+  _asteroidPrefab: {fileID: 5274459195478132398, guid: a25b9b0b537b2be45b38480e06eec8a1, type: 3}
   _info: {fileID: 11400000, guid: 5252214d996edbd48bb5cff1d490a496, type: 2}
   _temple: {fileID: 585795720}
 --- !u!114 &2005633028
