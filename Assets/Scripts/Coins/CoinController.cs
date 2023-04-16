@@ -8,6 +8,8 @@ namespace NordicGameJam.Coins
         public Transform Target { set; private get; }
         public float Speed { set; private get; }
 
+        public float DragOnAst { set; private get; }
+
         private float _timer;
 
         private void Update()
@@ -30,6 +32,7 @@ namespace NordicGameJam.Coins
             {
                 Target = Temple.Instance.transform;
                 _timer = 0f;
+                GetComponent<Rigidbody2D>().drag = DragOnAst;
             }
         }
     }

@@ -10,5 +10,8 @@ namespace NordicGameJam.SO
         public float MovementSpeed = .2f;
         public int BaseCoins = 10;
         public int CoinLostOnImpact = 5;
+
+        public float DragOnAsteroidDestroy;
+        public float DragOnBaseDamage;
     }
 }

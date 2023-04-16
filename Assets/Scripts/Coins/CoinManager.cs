@@ -1,4 +1,5 @@
 using NordicGameJam.SO;
+using TMPro;
 using UnityEngine;
 
 namespace NordicGameJam.Coins
@@ -11,7 +12,19 @@ namespace NordicGameJam.Coins
         [SerializeField]
         private GameObject _coinPrefab;
 
-        public int CurrentCoin { set; get; }
+        [SerializeField]
+        private TMP_Text _coinText;
+
+        private int _currentCoin;
+        public int CurrentCoin
+        {
+            set
+            {
+                _currentCoin = value;
+                _coinText.text = $"{_currentCoin}";
+            }
+            get => _currentCoin;
+        }
 
         public static CoinManager Instance { private set; get; }
 
@@ -32,6 +45,8 @@ namespace NordicGameJam.Coins
             cc.Speed = _coinInfo.MovementSpeed;
             var rb = go.GetComponent<Rigidbody2D>();
             rb.AddForce(Random.onUnitSphere.normalized * (isActive ? _coinInfo.PropulsionSpeedOnBaseDamage : _coinInfo.PropulsionSpeedOnAsteroidDestroy), ForceMode2D.Impulse);
+            rb.drag = isActive ? _coinInfo.DragOnBaseDamage : _coinInfo.DragOnAsteroidDestroy;
+            cc.DragOnAst = _coinInfo.DragOnAsteroidDestroy;
             if (isActive)
             {
                 if (rb.velocity.x < 0f)
