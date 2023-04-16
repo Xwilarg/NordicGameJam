@@ -33,6 +33,9 @@ namespace NordicGameJam.Player
         private float _power;
         private float _currForce;
 
+        public bool UseForce => _info.UseForce;
+        public float MaxDist => _info.MaxAttractionDistance;
+
         private void Awake()
         {
             _timer = Time.unscaledTime;
