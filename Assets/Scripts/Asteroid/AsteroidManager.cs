@@ -15,14 +15,18 @@ namespace NordicGameJam.Asteroid
         [SerializeField]
         private Transform _temple;
 
+        private float _ref;
+
         private void Awake()
         {
-            StartCoroutine(Spawn(_info.SpawnInternal, _asteroidPrefab));
+            _ref = Time.unscaledTime;
+            StartCoroutine(Spawn(_asteroidPrefab));
         }
 
-        private IEnumerator Spawn(float interval, GameObject asteroid)
+        private IEnumerator Spawn(GameObject asteroid)
         {
-            yield return new WaitForSeconds(interval);
+            var rate = _info.SpawnInternal.Evaluate(Time.unscaledTime - _ref);
+            yield return new WaitForSeconds(rate);
             Vector3 randomPosition = new Vector3( Random.Range(_info._minX, _info._maxX), Random.Range(_info._minY, _info._maxY), 0.0f);
             randomPosition += transform.position;
             randomPosition.z = 0.0f;
@@ -37,7 +41,7 @@ namespace NordicGameJam.Asteroid
             var rb = go.GetComponent<Rigidbody2D>();
             rb.velocity = direction * _info.Speed;
             rb.angularVelocity = Random.Range(10f, 20f);
-            yield return Spawn(interval, asteroid);
+            yield return Spawn(asteroid);
         }
     }
 }
