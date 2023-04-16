@@ -15,9 +15,12 @@ namespace NordicGameJam.Coins
 
         public static CoinManager Instance { private set; get; }
 
+        public int CoinLost => _coinInfo.CoinLostOnImpact;
+
         public void Awake()
         {
             Instance = this;
+            CurrentCoin = _coinInfo.BaseCoins;
         }
 
         public void Spawn(Vector3 pos, Transform target, bool isActive)
@@ -27,7 +30,16 @@ namespace NordicGameJam.Coins
             var cc = go.GetComponent<CoinController>();
             cc.Target = target;
             cc.Speed = _coinInfo.MovementSpeed;
-            go.GetComponent<Rigidbody2D>().AddForce(Random.onUnitSphere.normalized * _coinInfo.PropulsionSpeedOnAsteroidDestroy, ForceMode2D.Impulse);
+            var rb = go.GetComponent<Rigidbody2D>();
+            rb.AddForce(Random.onUnitSphere.normalized * (isActive ? _coinInfo.PropulsionSpeedOnBaseDamage : _coinInfo.PropulsionSpeedOnAsteroidDestroy), ForceMode2D.Impulse);
+            if (isActive)
+            {
+                if (rb.velocity.x < 0f)
+                {
+                    rb.velocity = new(-rb.velocity.x, rb.velocity.y);
+                }
+            }
+            Destroy(go, 10f);
         }
     }
 }

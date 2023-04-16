@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using NordicGameJam.SO;
+using UnityEngine;
 
 namespace NordicGameJam.Coins
 {
@@ -18,12 +19,17 @@ namespace NordicGameJam.Coins
             }
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.collider.CompareTag("Temple"))
+            if (collision.CompareTag("Temple"))
             {
                 CoinManager.Instance.CurrentCoin++;
                 Destroy(gameObject);
+            }
+            else if (collision.CompareTag("Player"))
+            {
+                Target = Temple.Instance.transform;
+                _timer = 0f;
             }
         }
     }
