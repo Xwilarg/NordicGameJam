@@ -1,6 +1,8 @@
 using NordicGameJam.SO;
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace NordicGameJam.Asteroid
 {
@@ -17,15 +19,29 @@ namespace NordicGameJam.Asteroid
 
         private float _ref;
 
+        [SerializeField]
+        private TMP_Text _timerText;
+        private float _timer;
+
         private void Awake()
         {
             _ref = Time.unscaledTime;
             StartCoroutine(Spawn(_asteroidPrefab));
         }
 
+        private void Update()
+        {
+            _timer += Time.deltaTime;
+            _timerText.text = $"{(int)(_info.MaxTime - _timer)}";
+            if (_timer >= _info.MaxTime)
+            {
+                SceneManager.LoadScene("Victory");
+            }
+        }
+
         private IEnumerator Spawn(GameObject asteroid)
         {
-            var rate = _info.SpawnInternal.Evaluate(Mathf.Clamp01((Time.unscaledTime - _ref) / _info.MaxTime));
+            var rate = _info.SpawnInternal.Evaluate(Mathf.Clamp01(_timer / _info.MaxTime));
             yield return new WaitForSeconds(rate);
             Vector3 randomPosition = new Vector3( Random.Range(_info._minX, _info._maxX), Random.Range(_info._minY, _info._maxY), 0.0f);
             randomPosition += transform.position;
