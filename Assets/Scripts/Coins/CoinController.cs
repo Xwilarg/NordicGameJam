@@ -52,9 +52,9 @@ namespace NordicGameJam.Coins
             while (true)
             {
                 _sr.enabled = false;
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.25f);
                 _sr.enabled = true;
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.25f);
             }
         }
     }

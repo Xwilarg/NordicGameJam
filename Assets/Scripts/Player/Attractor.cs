@@ -22,6 +22,8 @@ public class Attractor : MonoBehaviour
         _vfx.gameObject.SetActive(true);
         _vfx.Toggle(Color == LegoColor.RED);
         Activated = Color == LegoColor.RED;
+
+        if (Color == LegoColor.YELLOW) _vfx.DisableAll();
     }
 
     private void Start()
@@ -30,6 +32,11 @@ public class Attractor : MonoBehaviour
         {
             _vfx.Toggle(e.Color == Color);
             Activated = e.Color == Color;
+
+            if (Color == LegoColor.YELLOW && e.Color != Color)
+            {
+                _vfx.DisableAll();
+            }
         };
     }
 }

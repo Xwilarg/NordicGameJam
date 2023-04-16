@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace NordicGameJam.Hole
 {
@@ -12,6 +13,13 @@ namespace NordicGameJam.Hole
             _trail.SetActive(value);
             _sparkles.SetActive(true);
             _light.SetActive(true);
+        }
+
+        public void DisableAll()
+        {
+            _trail.SetActive(false);
+            _sparkles.SetActive(false);
+            _light.SetActive(false);
         }
     }
 }
