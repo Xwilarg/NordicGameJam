@@ -13,5 +13,8 @@ namespace NordicGameJam.SO
 
         public float DragOnAsteroidDestroy;
         public float DragOnBaseDamage;
+
+        public float OnDamageForceMin;
+        public float OnDamageForceMax;
     }
 }

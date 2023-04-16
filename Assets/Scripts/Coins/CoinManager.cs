@@ -48,11 +48,11 @@ namespace NordicGameJam.Coins
             cc.DragOnAst = _coinInfo.DragOnAsteroidDestroy;
             if (isActive)
             {
-                rb.AddForce(new Vector2(1f, Random.Range(-.25f, .25f)).normalized * (isActive ? _coinInfo.PropulsionSpeedOnBaseDamage : _coinInfo.PropulsionSpeedOnAsteroidDestroy), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(1f, Random.Range(-.25f, .25f)).normalized * _coinInfo.PropulsionSpeedOnBaseDamage * Random.Range(_coinInfo.OnDamageForceMin, _coinInfo.OnDamageForceMax), ForceMode2D.Impulse);
             }
             else
             {
-                rb.AddForce(Random.onUnitSphere.normalized * (isActive ? _coinInfo.PropulsionSpeedOnBaseDamage : _coinInfo.PropulsionSpeedOnAsteroidDestroy), ForceMode2D.Impulse);
+                rb.AddForce(Random.onUnitSphere.normalized * _coinInfo.PropulsionSpeedOnAsteroidDestroy, ForceMode2D.Impulse);
             }
             Destroy(go, 10f);
         }
