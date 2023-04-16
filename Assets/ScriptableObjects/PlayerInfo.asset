@@ -63,9 +63,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   MaxPressDuration: 1
-  LinearDrag: 0.96
+  LinearDrag: 0.582
   MinSpeed: 1
-  MaxSpeed: 20
+  MaxSpeed: 40
   RotationSpeed: 3
   MinAngle: 45
   DistAhead: 15
