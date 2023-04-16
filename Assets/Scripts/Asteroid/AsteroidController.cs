@@ -1,3 +1,4 @@
+using NordicGameJam.Audio;
 using NordicGameJam.Coins;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,7 @@ namespace NordicGameJam.Asteroid
         {
             if (collision.collider.CompareTag("Temple"))
             {
+                SFXManager.Instance.TakeDamage();
                 var amount = CoinManager.Instance.CoinLost;
                 if (CoinManager.Instance.CurrentCoin < amount)
                 {
@@ -35,6 +37,7 @@ namespace NordicGameJam.Asteroid
             }
             if (collision.collider.CompareTag("Player"))
             {
+                SFXManager.Instance.DestroyAsteroid();
                 CoinManager.Instance.Spawn(transform.position, Temple.Instance.transform, false);
                 Destroy(gameObject);
             }

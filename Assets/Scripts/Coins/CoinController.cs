@@ -1,4 +1,4 @@
-﻿using NordicGameJam.SO;
+﻿using NordicGameJam.Audio;
 using UnityEngine;
 
 namespace NordicGameJam.Coins
@@ -30,6 +30,7 @@ namespace NordicGameJam.Coins
             }
             else if (collision.CompareTag("Player"))
             {
+                SFXManager.Instance.GrabCoin();
                 Target = Temple.Instance.transform;
                 _timer = 0f;
                 GetComponent<Rigidbody2D>().drag = DragOnAst;

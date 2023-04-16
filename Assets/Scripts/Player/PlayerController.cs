@@ -1,4 +1,5 @@
-﻿using NordicGameJam.SO;
+﻿using NordicGameJam.Audio;
+using NordicGameJam.SO;
 using UnityEngine;
 
 namespace NordicGameJam.Player
@@ -124,6 +125,7 @@ namespace NordicGameJam.Player
             {
                 if (_maxForce > 0)
                 {
+                    SFXManager.Instance.SpeedUp();
                     // Apply force to the player
                     _speed += _info.BaseSpeed * _power * Time.fixedDeltaTime;
 
