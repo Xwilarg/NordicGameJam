@@ -22,7 +22,8 @@ namespace NordicGameJam.Coins
         {
             if (collision.collider.CompareTag("Temple"))
             {
-                Debug.Log("HU");
+                CoinManager.Instance.CurrentCoin++;
+                Destroy(gameObject);
             }
         }
     }

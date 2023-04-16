@@ -11,7 +11,7 @@ namespace NordicGameJam.Coins
         [SerializeField]
         private GameObject _coinPrefab;
 
-        private int _coinCount;
+        public int CurrentCoin { set; get; }
 
         public static CoinManager Instance { private set; get; }
 
@@ -26,7 +26,8 @@ namespace NordicGameJam.Coins
             go.layer = isActive ? 14 : 15;
             var cc = go.GetComponent<CoinController>();
             cc.Target = target;
-            cc.Speed = 1f;
+            cc.Speed = _coinInfo.MovementSpeed;
+            go.GetComponent<Rigidbody2D>().AddForce(Random.onUnitSphere.normalized * _coinInfo.PropulsionSpeedOnAsteroidDestroy, ForceMode2D.Impulse);
         }
     }
 }
