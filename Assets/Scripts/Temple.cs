@@ -6,9 +6,12 @@ namespace NordicGameJam
     {
         private Camera _cam;
 
+        public static Temple Instance { private set; get; }
+
         private void Awake()
         {
             _cam = Camera.main;
+            Instance = this;
         }
 
         private void Update()
