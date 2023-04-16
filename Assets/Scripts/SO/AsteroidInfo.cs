@@ -7,7 +7,6 @@ namespace NordicGameJam.SO
     {
         public float Speed;
         public AnimationCurve SpawnInternal;
-        public float MinSpawnInterval;
 
         [Tooltip("Box coordiantes for defining spawn location")]
         public float _minX = 12.0f;
