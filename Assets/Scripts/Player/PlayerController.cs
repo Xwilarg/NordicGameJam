@@ -34,7 +34,6 @@ namespace NordicGameJam.Player
         private float _currForce;
 
         public bool UseForce => _info.UseForce;
-        public float MaxDist => _info.MaxAttractionDistance;
 
         private void Awake()
         {
