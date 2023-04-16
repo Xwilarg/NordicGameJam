@@ -356,6 +356,8 @@ MonoBehaviour:
   - {fileID: 8438948149206424236}
   - {fileID: 4158925005218304378}
   - {fileID: 280135805638784907}
+  _destroyVFXContainer: {fileID: 4376871350864529732, guid: 26fd9cd557d722344ab716d4743388d6, type: 3}
+  _dissolveSpeed: 1
 --- !u!1 &8438948149206424236
 GameObject:
   m_ObjectHideFlags: 0
