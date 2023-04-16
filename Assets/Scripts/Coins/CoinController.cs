@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using NordicGameJam.Audio;
+using UnityEngine;
 
 namespace NordicGameJam.Coins
 {
@@ -6,6 +7,8 @@ namespace NordicGameJam.Coins
     {
         public Transform Target { set; private get; }
         public float Speed { set; private get; }
+
+        public float DragOnAst { set; private get; }
 
         private float _timer;
 
@@ -18,12 +21,19 @@ namespace NordicGameJam.Coins
             }
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.collider.CompareTag("Temple"))
+            if (collision.CompareTag("Temple"))
             {
                 CoinManager.Instance.CurrentCoin++;
                 Destroy(gameObject);
+            }
+            else if (collision.CompareTag("Player"))
+            {
+                SFXManager.Instance.GrabCoin();
+                Target = Temple.Instance.transform;
+                _timer = 0f;
+                GetComponent<Rigidbody2D>().drag = DragOnAst;
             }
         }
     }
