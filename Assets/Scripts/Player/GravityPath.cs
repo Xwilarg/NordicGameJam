@@ -48,7 +48,7 @@ public class GravityPath : MonoBehaviour
 
     void FixedUpdate()
     {
-        RenderPath(_info.TimeAhead, _pc.TheoricalSpeed01);
+        RenderPath(_info.DistAhead, _pc.TheoricalSpeed01);
         if (_pc.DidMove)
         {
             (transform.position, PathMomentum) = PathDelta(transform.position, PathMomentum, Time.fixedDeltaTime * PathSpeed, GetAttractors(), _pc.Speed01);
@@ -69,24 +69,35 @@ public class GravityPath : MonoBehaviour
         PathMomentum = dir;
     }
 
-    private void RenderPath(float timeAhead, float relSpeed)
+    private void RenderPath(float distAhead, float relSpeed)
     {
-        int pointRange = _info.SimPoints;
-        float delta = timeAhead/pointRange;
+        float delta = _info.TimeStep;
+        float simLength = 0;
 
         PathVisual.position = transform.position;
         LineRenderer line = PathVisual.GetComponent<LineRenderer>();
-        line.positionCount = pointRange;
+        line.positionCount = 0;
 
         List<Attractor> attractors = GetAttractors();
         
         Vector3 momentum = PathMomentum;
         Vector3 position = transform.position;
 
-        for(int i=0; i<pointRange; i++)
+        int i = 0;
+        while(simLength < distAhead)
         {
+            line.positionCount += 1;
             line.SetPosition(i, position);
-            (position, momentum) = PathDelta(position, momentum, delta, attractors, relSpeed);
+            i++;
+            
+            Vector3 next;
+            (next, momentum) = PathDelta(position, momentum, delta, attractors, relSpeed);
+            float step = Vector3.Distance(position, next);
+            if(simLength+step < distAhead)
+                position = next;
+            else
+                position += (next - position).normalized * (distAhead-simLength);
+            simLength += step;
         }
     }
 
