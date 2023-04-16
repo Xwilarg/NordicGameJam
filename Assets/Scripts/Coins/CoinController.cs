@@ -10,7 +10,15 @@ namespace NordicGameJam.Coins
 
         public float DragOnAst { set; private get; }
 
+        private SpriteRenderer _sr;
+
         private float _timer;
+
+        private void Awake()
+        {
+            _sr = GetComponent<SpriteRenderer>();
+            StartCoroutine(Blink());
+        }
 
         private void Update()
         {
@@ -34,6 +42,18 @@ namespace NordicGameJam.Coins
                 Target = Temple.Instance.transform;
                 _timer = 0f;
                 GetComponent<Rigidbody2D>().drag = DragOnAst;
+            }
+        }
+
+        private IEnumerator Blink()
+        {
+            yield return new WaitForSeconds(7f);
+            while (true)
+            {
+                _sr.enabled = false;
+                yield return new WaitForSeconds(.5f);
+                _sr.enabled = true;
+                yield return new WaitForSeconds(.5f);
             }
         }
     }
