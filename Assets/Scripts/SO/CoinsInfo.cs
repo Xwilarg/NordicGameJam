@@ -5,7 +5,7 @@ namespace NordicGameJam.SO
     [CreateAssetMenu(menuName = "ScriptableObject/CoinsInfo", fileName = "CoinsInfo")]
     public class CoinsInfo : ScriptableObject
     {
-        public float xCoordinate;
-        public float yCoordinate;
+        public float PropulsionSpeedOnAsteroidDestroy = 3f;
+        public float MovementSpeed = .2f;
     }
 }
