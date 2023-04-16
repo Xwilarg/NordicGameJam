@@ -1,4 +1,6 @@
+using NordicGameJam.Coins;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace NordicGameJam.Asteroid
 {
@@ -14,8 +16,26 @@ namespace NordicGameJam.Asteroid
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.collider.CompareTag("Temple") || collision.collider.CompareTag("Player"))
+            if (collision.collider.CompareTag("Temple"))
             {
+                var amount = CoinManager.Instance.CoinLost;
+                if (CoinManager.Instance.CurrentCoin < amount)
+                {
+                    SceneManager.LoadScene("GameOver");
+                }
+                else
+                {
+                    for (int i = 0; i < amount; i++)
+                    {
+                        CoinManager.Instance.Spawn(Temple.Instance.CoinSpawn.position, null, true);
+                        CoinManager.Instance.CurrentCoin--;
+                    }
+                }
+                Destroy(gameObject);
+            }
+            if (collision.collider.CompareTag("Player"))
+            {
+                CoinManager.Instance.Spawn(transform.position, Temple.Instance.transform, false);
                 Destroy(gameObject);
             }
         }

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbadc70cfa203824d983aa71e953978e, type: 3}
   m_Name: CoinsInfo
   m_EditorClassIdentifier: 
-  xCoordinate: 9.11
-  yCoordinate: 0
+  PropulsionSpeedOnAsteroidDestroy: 10
+  MovementSpeed: 0.03
