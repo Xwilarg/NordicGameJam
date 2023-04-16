@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6778effb181726c4c8ae47f48a9e5276
+guid: 06374039c0f05454b94a525a19479bd5
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Chubby Cheeks
+  - Boogaloo
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
