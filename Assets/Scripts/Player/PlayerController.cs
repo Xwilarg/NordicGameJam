@@ -53,7 +53,7 @@ namespace NordicGameJam.Player
             get
             {
                 var minSpeed = _info.MinSpeed * (_maxForce > 0 ? _info.SlowDownMultiplier : 1f);
-                return (_speed - minSpeed) / (_info.MaxSpeed - minSpeed);
+                return _info.AttractionCurve.Evaluate((_speed - minSpeed) / (_info.MaxSpeed - minSpeed));
             }
         }
 
@@ -63,7 +63,7 @@ namespace NordicGameJam.Player
             {
                 var minSpeed = _info.MinSpeed * (_maxForce > 0 ? _info.SlowDownMultiplier : 1f);
                 var nextSpeed = Mathf.Clamp(_speed + _info.BaseSpeed * _power * Time.fixedDeltaTime, minSpeed, _info.MaxSpeed);
-                return (nextSpeed - minSpeed) / (_info.MaxSpeed - minSpeed);
+                return _info.AttractionCurve.Evaluate((nextSpeed - minSpeed) / (_info.MaxSpeed - minSpeed));
             }
         }
 
