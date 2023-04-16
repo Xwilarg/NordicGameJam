@@ -7,7 +7,7 @@
     "gameOver": "Fin del juego",
     "mainMenu": "Menú principal",
 
-    "legoHub": "Interfaz LEGO®:",
+    "legoHub": "Interfaz de LEGO®:",
     "legoLight": "Sensor de color LEGO®:",
     "legoButton": "Botón LEGO®:",
     "battery": "Batería:",
@@ -18,6 +18,8 @@
     "techArtist": "Artista VFX",
     "programming": "Programación",
     "gameDesign": "Diseño",
+    "fontBy": "Fuente por",
+    "under": "bajo",
 
     "disclaimer": "LEGO® es una marca comercial de The LEGO Group of Companies, entidad que no patrocina, autoriza ni respalda este juego"
 }
