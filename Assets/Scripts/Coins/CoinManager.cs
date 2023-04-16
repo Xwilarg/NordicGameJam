@@ -44,15 +44,15 @@ namespace NordicGameJam.Coins
             cc.Target = target;
             cc.Speed = _coinInfo.MovementSpeed;
             var rb = go.GetComponent<Rigidbody2D>();
-            rb.AddForce(Random.onUnitSphere.normalized * (isActive ? _coinInfo.PropulsionSpeedOnBaseDamage : _coinInfo.PropulsionSpeedOnAsteroidDestroy), ForceMode2D.Impulse);
             rb.drag = isActive ? _coinInfo.DragOnBaseDamage : _coinInfo.DragOnAsteroidDestroy;
             cc.DragOnAst = _coinInfo.DragOnAsteroidDestroy;
             if (isActive)
             {
-                if (rb.velocity.x < 0f)
-                {
-                    rb.velocity = new(-rb.velocity.x, rb.velocity.y);
-                }
+                rb.AddForce(new Vector2(1f, Random.Range(-.25f, .25f)).normalized * (isActive ? _coinInfo.PropulsionSpeedOnBaseDamage : _coinInfo.PropulsionSpeedOnAsteroidDestroy), ForceMode2D.Impulse);
+            }
+            else
+            {
+                rb.AddForce(Random.onUnitSphere.normalized * (isActive ? _coinInfo.PropulsionSpeedOnBaseDamage : _coinInfo.PropulsionSpeedOnAsteroidDestroy), ForceMode2D.Impulse);
             }
             Destroy(go, 10f);
         }
