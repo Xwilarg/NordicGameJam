@@ -12,27 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f44a1bdc5b2054e9c8889f07e52354, type: 3}
   m_Name: AsteroidInfo
   m_EditorClassIdentifier: 
-  Speed: 1.2
+  Speed: 2.2
   SpawnInternal:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -4.6529684
-      value: 4.0920095
-      inSlope: -0.016889635
-      outSlope: -0.016889635
+      time: 0.026140116
+      value: 2.5267954
+      inSlope: -0.68943715
+      outSlope: -0.68943715
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.92898
+      outWeight: 0.016276445
     - serializedVersion: 3
-      time: 1.0026877
-      value: 0.82637227
-      inSlope: 0
-      outSlope: 0
+      time: 4.8880653
+      value: 0.035586707
+      inSlope: 0.07188008
+      outSlope: 0.07188008
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.2335518
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
