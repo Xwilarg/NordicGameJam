@@ -6,7 +6,7 @@ namespace NordicGameJam.SO
     public class AsteroidInfo : ScriptableObject
     {
         public float Speed;
-        public float SpawnInternal;
+        public AnimationCurve SpawnInternal;
 
         [Tooltip("Box coordiantes for defining spawn location")]
         public float _minX = 12.0f;
