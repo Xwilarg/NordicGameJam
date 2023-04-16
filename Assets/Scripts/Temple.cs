@@ -8,6 +8,8 @@ namespace NordicGameJam
 
         public static Temple Instance { private set; get; }
 
+        public Transform CoinSpawn;
+
         private void Awake()
         {
             _cam = Camera.main;
