@@ -1,0 +1,25 @@
+{
+    "playLEGO": "Usa il kit LEGO®",
+    "playKeyboard": "Usa la tastiera",
+    "credits": "Crediti",
+    "quit": "Esci",
+
+    "gameOver": "Game Over",
+    "mainMenu": "Menù principale",
+
+    "legoHub": "LEGO® HUB:",
+    "legoLight": "Sensore di colori LEGO®:",
+    "legoButton": "Interruttore LEGO®:",
+    "battery": "Batteria:",
+    "ok": "OK",
+    "waiting": "Connettendo...",
+
+    "artAndMusic": "Arte & Audio",
+    "techArtist": "VFX",
+    "programming": "Codice",
+    "gameDesign": "Game Design",
+    "fontBy": "Font",
+    "under": "in accordo con",
+
+    "disclaimer": "LEGO® è un marchio del gruppo di società LEGO, il quale non sponsorizza, autorizza o supporta questo sito."
+}

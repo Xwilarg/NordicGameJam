@@ -4,17 +4,24 @@
     "credits": "Créditos",
     "quit": "Salir",
 
-    "legoHub": "Interfaz LEGO®:",
+    "gameOver": "Fin del juego",
+    "mainMenu": "Menú principal",
+
+    "legoHub": "Interfaz de LEGO®:",
     "legoLight": "Sensor de color LEGO®:",
     "legoButton": "Botón LEGO®:",
     "battery": "Batería:",
     "ok": "OK",
     "waiting": "Esperando...",
 
-    "artAndAudio": "Arte y Audio",
+    "artAndMusic": "Arte y Audio",
     "techArtist": "Artista VFX",
     "programming": "Programación",
     "gameDesign": "Diseño",
+    "fontBy": "Fuente por",
+    "under": "bajo",
+
+    "score": "Puntos:",
 
     "disclaimer": "LEGO® es una marca comercial de The LEGO Group of Companies, entidad que no patrocina, autoriza ni respalda este juego"
 }

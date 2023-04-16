@@ -43,7 +43,7 @@ namespace NordicGameJam
             HUB.enabled = false;
         }
 
-        private readonly LegoColor[] _validColors = new[] { LegoColor.BLUE, LegoColor.RED, LegoColor.GREEN };
+        private readonly LegoColor[] _validColors = new[] { LegoColor.BLUE, LegoColor.RED, LegoColor.GREEN, LegoColor.YELLOW };
         public void OnColorChange(int id)
         {
             var color = (LegoColor)id;
@@ -55,6 +55,7 @@ namespace NordicGameJam
                     LegoColor.RED => Color.red,
                     LegoColor.GREEN => Color.green,
                     LegoColor.BLUE => Color.blue,
+                    LegoColor.YELLOW => Color.yellow,
                     _ => null
                 };
                 if (targetColor != null)

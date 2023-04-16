@@ -35,11 +35,14 @@ namespace NordicGameJam.SO
         public float MinAngle;
 
         [Header("Path Ahead")]
-        [Range(0f, 10f)]
-        [Tooltip("Seconds ahead predicted by path")]
-        public float TimeAhead;
+        [Range(0f, 40f)]
+        [Tooltip("Distance ahead predicted by path")]
+        public float DistAhead;
 
-        [Tooltip("Number of points imulating the path")]
-        public int SimPoints;
+        [Tooltip("Time resolution of path simulation")]
+        [Range(0.01f, 0.4f)]
+        public float TimeStep;
+
+        public bool UseForce;
     }
 }

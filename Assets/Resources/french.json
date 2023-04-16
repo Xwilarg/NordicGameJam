@@ -4,6 +4,9 @@
     "credits": "Crédits",
     "quit": "Quitter",
 
+    "gameOver": "Partie Fini",
+    "mainMenu": "Menu Principal",
+
     "legoHub": "Interface LEGO® :",
     "legoLight": "Détecteur de couleurs LEGO®:",
     "legoButton": "Button LEGO®:",
@@ -11,10 +14,14 @@
     "ok": "OK",
     "waiting": "En attente...",
 
-    "artAndAudio": "Art & Audio",
+    "artAndMusic": "Art & Audio",
     "techArtist": "Artiste VFX",
     "programming": "Programmation",
     "gameDesign": "Game Design",
+    "fontBy": "Police par",
+    "under": "sous",
+
+    "score": "Score :",
 
     "disclaimer": "LEGO® est une marque commerciale du groupe LEGO qui ne sponsorise, n'autorise et ne soutient pas ce jeu"
 }

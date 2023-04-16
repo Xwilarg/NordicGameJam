@@ -11,7 +11,8 @@ namespace NordicGameJam.Translation
         {
             "english",
             "french",
-            "spanish"
+            "spanish",
+            "italian"
         };
 
         private Translate()
