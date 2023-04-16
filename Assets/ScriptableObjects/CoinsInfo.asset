@@ -12,5 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbadc70cfa203824d983aa71e953978e, type: 3}
   m_Name: CoinsInfo
   m_EditorClassIdentifier: 
-  xCoordinate: 9.11
-  yCoordinate: 0
+  PropulsionSpeedOnAsteroidDestroy: 10
+  PropulsionSpeedOnBaseDamage: 8
+  MovementSpeed: 0.03
+  BaseCoins: 20
+  CoinLostOnImpact: 4
+  DragOnAsteroidDestroy: 0.1
+  DragOnBaseDamage: 0.5
+  OnDamageForceMin: 0.1
+  OnDamageForceMax: 1.5

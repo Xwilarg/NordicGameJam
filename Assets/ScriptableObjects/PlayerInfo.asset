@@ -65,9 +65,9 @@ MonoBehaviour:
   MaxPressDuration: 1
   LinearDrag: 0.96
   MinSpeed: 1
-  MaxSpeed: 30
+  MaxSpeed: 20
   RotationSpeed: 3
   MinAngle: 45
-  TimeAhead: 3.43
-  SimPoints: 100
+  DistAhead: 15
+  TimeStep: 0.05
   UseForce: 1

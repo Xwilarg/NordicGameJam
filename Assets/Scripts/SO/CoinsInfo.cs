@@ -6,6 +6,15 @@ namespace NordicGameJam.SO
     public class CoinsInfo : ScriptableObject
     {
         public float PropulsionSpeedOnAsteroidDestroy = 3f;
+        public float PropulsionSpeedOnBaseDamage = 3f;
         public float MovementSpeed = .2f;
+        public int BaseCoins = 10;
+        public int CoinLostOnImpact = 5;
+
+        public float DragOnAsteroidDestroy;
+        public float DragOnBaseDamage;
+
+        public float OnDamageForceMin;
+        public float OnDamageForceMax;
     }
 }
