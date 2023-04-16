@@ -7,7 +7,7 @@ Enthusiasm
 
 ## Rules
 Use your button to propulse your fu dog and destroy the asteroids before they hit your temple! \
-Switch the colors to set which black matter point is active
+Jump on the force sensor to boost your speed, switch the colors to set which black matter vortex is active and use it to boost your speed and control your trajectory. Hint: releasing from a black matter vortex after activating the next vortex will help you boosting your speed
 
 ## Play with LEGO® Kit
 Use a LEGO® Hub with 1 to 2 force sensors (1 per player) and a color sensor along with red, blue and green bricks (see example at the end)
