@@ -1,3 +1,4 @@
+using NordicGameJam.Coins;
 using NordicGameJam.SO;
 using System.Collections;
 using TMPro;
@@ -35,6 +36,7 @@ namespace NordicGameJam.Asteroid
             _timerText.text = $"{(int)(_info.MaxTime - _timer)}";
             if (_timer >= _info.MaxTime)
             {
+                ScoreManager.Score = CoinManager.Instance.CurrentCoin;
                 SceneManager.LoadScene("Victory");
             }
         }
