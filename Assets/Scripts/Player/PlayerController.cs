@@ -48,6 +48,25 @@ namespace NordicGameJam.Player
             _powerBar.localScale = new Vector3(0f, _powerBar.localScale.y, _powerBar.localScale.z);
         }
 
+        public float Speed01
+        {
+            get
+            {
+                var minSpeed = _info.MinSpeed * (_maxForce > 0 ? _info.SlowDownMultiplier : 1f);
+                return _info.AttractionCurve.Evaluate((_speed - minSpeed) / (_info.MaxSpeed - minSpeed));
+            }
+        }
+
+        public float TheoricalSpeed01
+        {
+            get
+            {
+                var minSpeed = _info.MinSpeed * (_maxForce > 0 ? _info.SlowDownMultiplier : 1f);
+                var nextSpeed = Mathf.Clamp(_speed + _info.BaseSpeed * _power * Time.fixedDeltaTime, minSpeed, _info.MaxSpeed);
+                return _info.AttractionCurve.Evaluate((nextSpeed - minSpeed) / (_info.MaxSpeed - minSpeed));
+            }
+        }
+
         private void Update()
         {
             _power += Mathf.Clamp(Time.deltaTime *
@@ -81,7 +100,7 @@ namespace NordicGameJam.Player
 
         private void FixedUpdate()
         {
-            _speed /= (1f + _info.LinearDrag);
+            _speed /= (1f + _info.LinearDrag * Time.deltaTime);
 
             var minSpeed = _info.MinSpeed * (_maxForce > 0 ? _info.SlowDownMultiplier : 1f);
             // Player has a minimal speed it can't go under

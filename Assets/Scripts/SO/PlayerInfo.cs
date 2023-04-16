@@ -13,6 +13,8 @@ namespace NordicGameJam.SO
         [Range(0f, 1f)]
         public float SlowDownMultiplier;
 
+        public AnimationCurve AttractionCurve;
+
         [Tooltip("Curve evolution of the speed depending of how much we press the button")]
         public AnimationCurve PressionModifier;
 

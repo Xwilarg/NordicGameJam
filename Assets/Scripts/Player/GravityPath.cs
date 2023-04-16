@@ -48,10 +48,10 @@ public class GravityPath : MonoBehaviour
 
     void FixedUpdate()
     {
-        RenderPath(_info.TimeAhead);
+        RenderPath(_info.TimeAhead, _pc.TheoricalSpeed01);
         if (_pc.DidMove)
         {
-            (transform.position, PathMomentum) = PathDelta(transform.position, PathMomentum, Time.fixedDeltaTime * PathSpeed, GetAttractors());
+            (transform.position, PathMomentum) = PathDelta(transform.position, PathMomentum, Time.fixedDeltaTime * PathSpeed, GetAttractors(), _pc.Speed01);
         }
     }
 
@@ -69,7 +69,7 @@ public class GravityPath : MonoBehaviour
         PathMomentum = dir;
     }
 
-    private void RenderPath(float timeAhead)
+    private void RenderPath(float timeAhead, float relSpeed)
     {
         int pointRange = _info.SimPoints;
         float delta = timeAhead/pointRange;
@@ -86,41 +86,47 @@ public class GravityPath : MonoBehaviour
         for(int i=0; i<pointRange; i++)
         {
             line.SetPosition(i, position);
-            (position, momentum) = PathDelta(position, momentum, delta, attractors);
+            (position, momentum) = PathDelta(position, momentum, delta, attractors, relSpeed);
         }
     }
 
-    private (Vector3, Vector3) PathDelta(Vector3 pos, Vector3 momentum, float deltaT, List<Attractor> attractors)
+    private (Vector3, Vector3) PathDelta(Vector3 pos, Vector3 momentum, float deltaT, List<Attractor> attractors, float relSpeed)
     {
         Vector3 m = momentum;
         foreach(Attractor att in attractors)
         {
             Vector3 dir = (att.transform.position - pos).normalized;
-            m += dir * (1/(dir.magnitude*dir.magnitude)) * G * att.Strenght * deltaT;
+            m += dir * (1/(dir.magnitude*dir.magnitude)) * G * att.Strenght * deltaT * (1f - relSpeed);
         }
+
+        Vector3 delta = m*deltaT;
 
         var bounds = CalculateBounds(_cam);
         bounds.min += new Vector3(2f, 2f);
         bounds.max -= new Vector3(2f, 2f);
-        (bool hitBounds, Vector3 normal) = BoundsHit(pos+(m*deltaT), bounds);
+
+        (bool hitBounds, Vector3 normal, float upto) = BoundsHit(pos, pos+(m*deltaT), bounds);
         if(hitBounds)
         {
             m = Vector3.Reflect(m, normal);
+            delta = delta.normalized * upto + m.normalized * (delta.magnitude-upto);
         }
 
-        return (pos+(m*deltaT), m);
+        return (pos+delta, m);
     }
 
-    private (bool, Vector3) BoundsHit(Vector3 pos, Bounds b)
+    private (bool, Vector3, float) BoundsHit(Vector3 before, Vector3 after, Bounds b)
     {
-        if(pos.x < b.min.x)
-            return (true, Vector3.right);
-        if(pos.y < b.min.y)
-            return (true, Vector3.up);
-        if(pos.x > b.max.x)
-            return (true, Vector3.left);
-        if(pos.y > b.max.y)
-            return (true, Vector3.down);
-        return (false, Vector3.zero);
+        Vector3 delta = after-before;
+
+        if(after.x < b.min.x)
+            return (true, Vector3.right, delta.magnitude * ((b.min.x-before.x) / (after.x-before.x)));
+        if(after.y < b.min.y)
+            return (true, Vector3.up, delta.magnitude * ((b.min.y-before.y) / (after.y-before.y)));
+        if(after.x > b.max.x)
+            return (true, Vector3.left, delta.magnitude * ((b.max.x-before.x) / (after.x-before.x)));
+        if(after.y > b.max.y)
+            return (true, Vector3.down, delta.magnitude * ((b.max.y-before.y) / (after.y-before.y)));
+        return (false, Vector3.zero, 0);
     }
 }
