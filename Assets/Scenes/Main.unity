@@ -1177,6 +1177,54 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0887eef0-6b24-4e74-afb7-8d3ff075770c
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2005633024}
+        m_TargetAssemblyTypeName: NordicGameJam.PlayerManager, Assembly-CSharp
+        m_MethodName: OnColorRed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d41e8727-fa68-43bb-9a56-43b117759bf8
+    m_ActionName: Player/Color1[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2005633024}
+        m_TargetAssemblyTypeName: NordicGameJam.PlayerManager, Assembly-CSharp
+        m_MethodName: OnColorBlue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 26381387-b35f-4e09-9a02-aa8b4e23a208
+    m_ActionName: Player/Color2[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2005633024}
+        m_TargetAssemblyTypeName: NordicGameJam.PlayerManager, Assembly-CSharp
+        m_MethodName: OnColorGreen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bfa8d371-7a9f-4880-a62b-f8bb5c118d5b
+    m_ActionName: Player/Color3[/Keyboard/3]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

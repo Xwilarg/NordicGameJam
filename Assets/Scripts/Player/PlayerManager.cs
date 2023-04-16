@@ -58,6 +58,30 @@ namespace NordicGameJam
         public void OnButton2Press(InputAction.CallbackContext value)
             => OnPlayerInput(1, value);
 
+        public void OnColorRed(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                ColorManager.Instance.ChangeColor(Hole.LegoColor.RED);
+            }
+        }
+
+        public void OnColorGreen(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                ColorManager.Instance.ChangeColor(Hole.LegoColor.GREEN);
+            }
+        }
+
+        public void OnColorBlue(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                ColorManager.Instance.ChangeColor(Hole.LegoColor.BLUE);
+            }
+        }
+
         public void OnPlayerInput(int playerID, InputAction.CallbackContext value)
         {
             if (value.phase == InputActionPhase.Started && LEGOManager.Instance.CanUseKeyboard && playerID < _sensors.Length)
