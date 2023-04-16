@@ -25,7 +25,7 @@ namespace NordicGameJam.Asteroid
 
         private IEnumerator Spawn(GameObject asteroid)
         {
-            var rate = _info.SpawnInternal.Evaluate(Mathf.Clamp01(Time.unscaledTime - _ref / _info.MaxTime));
+            var rate = _info.SpawnInternal.Evaluate(Mathf.Clamp01((Time.unscaledTime - _ref) / _info.MaxTime));
             yield return new WaitForSeconds(rate);
             Vector3 randomPosition = new Vector3( Random.Range(_info._minX, _info._maxX), Random.Range(_info._minY, _info._maxY), 0.0f);
             randomPosition += transform.position;
