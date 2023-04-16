@@ -95,7 +95,7 @@ public class GravityPath : MonoBehaviour
         Vector3 m = momentum;
         foreach(Attractor att in attractors)
         {
-            if (Vector2.Distance(att.transform.position, pos) <= _pc.MaxDist)
+            if (Vector2.Distance(att.transform.position, pos) <= att.MaxAttractionDistance)
             {
                 Vector3 dir = (att.transform.position - pos).normalized;
                 m += dir * (1 / (dir.magnitude * dir.magnitude)) * G * att.Strenght * deltaT * (_pc.UseForce ? (1f - relSpeed) : 1f);

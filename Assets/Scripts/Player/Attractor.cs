@@ -9,6 +9,7 @@ public class Attractor : MonoBehaviour
     public bool Activated;
 
     public LegoColor Color;
+    public float MaxAttractionDistance;
 
     [SerializeField]
     private ColorVFXInfo[] _infos;

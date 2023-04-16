@@ -43,6 +43,5 @@ namespace NordicGameJam.SO
         public int SimPoints;
 
         public bool UseForce;
-        public float MaxAttractionDistance;
     }
 }

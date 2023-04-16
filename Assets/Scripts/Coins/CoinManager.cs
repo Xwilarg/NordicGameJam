@@ -1,6 +1,4 @@
 using NordicGameJam.SO;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace NordicGameJam.Coins
@@ -18,12 +16,6 @@ namespace NordicGameJam.Coins
         void Start()
         {
             Instantiate(_coinPrefab, new Vector2(_coinInfo.xCoordinate, _coinInfo.yCoordinate), Quaternion.identity);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }
