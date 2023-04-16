@@ -32,7 +32,7 @@ namespace NordicGameJam.Asteroid
         private void Update()
         {
             _timer += Time.deltaTime;
-            _timerText.text = $"{_info.MaxTime - _timer:0.0}";
+            _timerText.text = $"{(int)(_info.MaxTime - _timer)}";
             if (_timer >= _info.MaxTime)
             {
                 SceneManager.LoadScene("Victory");
