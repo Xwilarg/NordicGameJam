@@ -21,7 +21,7 @@ namespace NordicGameJam.Asteroid
             {
                 SFXManager.Instance.TakeDamage();
                 var amount = CoinManager.Instance.CoinLost;
-                if (CoinManager.Instance.CurrentCoin < amount)
+                if (CoinManager.Instance.CurrentCoin <= amount)
                 {
                     SceneManager.LoadScene("GameOver");
                 }
