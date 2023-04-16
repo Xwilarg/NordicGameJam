@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1110407233346968599}
   m_Layer: 0
   m_Name: ActivatedLight
-  m_TagString: Untagged
+  m_TagString: ParticleLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4861,7 +4861,7 @@ Transform:
   - {fileID: 6703391441695483406}
   - {fileID: 4253929859672275132}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5286576024661091004
 MonoBehaviour:
@@ -4898,7 +4898,7 @@ GameObject:
   - component: {fileID: 4095899469362249121}
   m_Layer: 0
   m_Name: ActivatedLight
-  m_TagString: Untagged
+  m_TagString: ParticleLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9726,7 +9726,7 @@ GameObject:
   - component: {fileID: 5973512335117620200}
   m_Layer: 0
   m_Name: ActivatedLight
-  m_TagString: Untagged
+  m_TagString: ParticleLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -18,6 +18,9 @@ public class Attractor : MonoBehaviour
     private void Awake()
     {
         _vfx = _infos.FirstOrDefault(x => x.Key == Color).VFX;
+        _vfx.SetActive(true);
+
+        _vfx = _vfx.GetComponentsInChildren<ParticleSystem>().FirstOrDefault(x => x.CompareTag("ParticleLight")).gameObject;
         _vfx.SetActive(Color == LegoColor.RED);
         Activated = Color == LegoColor.RED;
     }

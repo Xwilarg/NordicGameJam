@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Temple
+  - ParticleLight
   layers:
   - Default
   - TransparentFX
