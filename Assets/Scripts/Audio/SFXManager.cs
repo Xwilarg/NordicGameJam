@@ -8,7 +8,7 @@ namespace NordicGameJam.Audio
         private AudioSource _source;
 
         [SerializeField]
-        private AudioClip _coin, _explodes, _damage;
+        private AudioClip _coin, _explodes, _damage, _speedUp;
 
         public static SFXManager Instance { private set; get; }
 
@@ -20,8 +20,10 @@ namespace NordicGameJam.Audio
         public void GrabCoin()
             => _source.PlayOneShot(_coin);
         public void TakeDamage()
-            => _source.PlayOneShot(_coin);
+            => _source.PlayOneShot(_damage);
         public void DestroyAsteroid()
-            => _source.PlayOneShot(_coin);
+            => _source.PlayOneShot(_explodes);
+        public void SpeedUp()
+            => _source.PlayOneShot(_speedUp);
     }
 }

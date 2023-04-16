@@ -1868,6 +1868,7 @@ MonoBehaviour:
   _coin: {fileID: 8300000, guid: b7f2a27334dbe4cb591a67791d2292d4, type: 3}
   _explodes: {fileID: 8300000, guid: ef19900753b4943e5aaac8cb5761a6c5, type: 3}
   _damage: {fileID: 8300000, guid: 20bd2c2741dcf4c8a8164c569ccbd8ef, type: 3}
+  _speedUp: {fileID: 8300000, guid: 3f6689d224e6d46c09600b037e4e03e5, type: 3}
 --- !u!1 &2020084075
 GameObject:
   m_ObjectHideFlags: 0
