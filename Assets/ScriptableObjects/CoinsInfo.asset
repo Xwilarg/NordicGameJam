@@ -13,4 +13,11 @@ MonoBehaviour:
   m_Name: CoinsInfo
   m_EditorClassIdentifier: 
   PropulsionSpeedOnAsteroidDestroy: 10
+  PropulsionSpeedOnBaseDamage: 8
   MovementSpeed: 0.03
+  BaseCoins: 20
+  CoinLostOnImpact: 4
+  DragOnAsteroidDestroy: 0.1
+  DragOnBaseDamage: 0.5
+  OnDamageForceMin: 0.1
+  OnDamageForceMax: 1.5

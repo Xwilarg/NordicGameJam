@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AsteroidInfo
   m_EditorClassIdentifier: 
   Speed: 1.2
-  SpawnInternal: 3
+  SpawnInternal: 5
   _minX: 12
   _maxX: 20
   _minY: -6
